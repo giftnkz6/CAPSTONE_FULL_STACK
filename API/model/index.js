@@ -83,20 +83,19 @@ class User {
     }
     async newUser(req, res) {
         //Payload req.body to fetch data from user Payload = is an information coming from the user
-        let info = req.body;
         // Hashing user password
-        info.userPass = await 
-        hash(info.userPass, 15);
+        req.body.userPass = await 
+        hash(req.body.userPass, 15);
         // This information will be used for authentication.
         let user = {
-            emailAdd: info.emailAdd,
-            userPass: info.userPass
+            emailAdd: req.body.emailAdd,
+            userPass: req.body.userPass
         }
         // sql query
         const qur =
         `INSERT INTO Users
         SET ?;`;
-        dataBs.query(qur, [info], (err)=> {
+        dataBs.query(qur, [req.body], (err)=> {
             if(err) {
                 res.status(401).json({err});
             }else {
@@ -185,6 +184,7 @@ class Product {
         );    
 
     }
+    
     editProduct(req, res) {
         const qur = 
         `

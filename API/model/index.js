@@ -216,24 +216,23 @@ class Product {
 
 }
 
-class Cart{
-    getCart(req, res){
-        const qur = `SELECT p.id, p.prodName, p.prodDescription, 
-        p.price, p.imgURL
-        FROM Products p
-        INNER JOIN Cart
-        USING prodID;`;
-        dataBs.query(qur, [req.params.id], (err, results)=> {
-            if(err) throw err;
-            res.status(200).json({results: results})
-        });
+// class Cart{
+//     getCart(req, res){
+//         const qur = `SELECT p.id, p.prodName, p.prodDescription, 
+//         p.price, p.imgURL
+//         FROM Products p
+//         INNER JOIN Cart
+//         USING prodID;`;
+//         dataBs.query(qur, [req.params.id], (err, results)=> {
+//             if(err) throw err;
+//             res.status(200).json({results: results})
+//         });
 
-    }
+//     }
 
-}
+// }
 // Export User and Product class
 module.exports = {
     User, 
-    Product,
-    Cart
+    Product
 }

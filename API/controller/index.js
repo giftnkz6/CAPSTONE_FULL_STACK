@@ -12,7 +12,7 @@ const user = new User();
 // Product instance
 const product = new Product();
 
-const cart = new Cart();
+// const cart = new Cart();
 
 route.get('/', (req, res)=>{
     res.status(200).sendFile(path.join(__dirname, '../view/index.html'));
@@ -65,8 +65,8 @@ route.delete('/product/:id', (req, res)=> {
     product.removeProduct(req, res);
 })
 
-route.get('/users/:id/carts', (req, res) =>{
-    cart.getCart(req, res);
-})
+// route.get('/users/:id/carts', (req, res) =>{
+//     cart.getCart(req, res);
+// })
 
 module.exports = route;

@@ -66,7 +66,7 @@ route.delete('/product/:id', (req, res)=> {
 })
 
 // route.get('/users/:id/carts', (req, res) =>{
-//     cart.getCart(req, res);
+//     cart.getCartItems(req, res);
 // })
 
 module.exports = route;

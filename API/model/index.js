@@ -217,11 +217,11 @@ class Product {
 }
 
 // class Cart{
-//     getCart(req, res){
+//     getCartItems(req, res){
 //         const qur = `SELECT p.id, p.prodName, p.prodDescription, 
-//         p.price, p.imgURL
+//         p.price, p.imgURL, u.userID
 //         FROM Products p
-//         INNER JOIN Cart
+//         INNER JOIN Users u
 //         USING prodID;`;
 //         dataBs.query(qur, [req.params.id], (err, results)=> {
 //             if(err) throw err;
@@ -235,4 +235,5 @@ class Product {
 module.exports = {
     User, 
     Product
+    // Cart
 }

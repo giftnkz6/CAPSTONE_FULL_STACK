@@ -149,7 +149,7 @@ class User {
 // Product
 class Product {
     getProducts(req, res) {
-        const qur = `SELECT id, prodName, prodDescription, 
+        const qur = `SELECT prodID, prodName, prodDescription, 
         category, price, prodQuantity, imgURL
         FROM Products;`;
         dataBs.query(qur, (err, results)=> {
@@ -158,10 +158,10 @@ class Product {
         });
     }
    getProduct(req, res) {
-        const qur = `SELECT id, prodName, prodDescription, 
+        const qur = `SELECT prodID, prodName, prodDescription, 
         category, price, prodQuantity, imgURL
         FROM Products
-        WHERE id = ?;`;
+        WHERE prodID = ?;`;
         dataBs.query(qur, [req.params.id], (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
@@ -190,7 +190,7 @@ class Product {
         `
         UPDATE Products
         SET ?
-        WHERE id = ?
+        WHERE prodID = ?
         `;
         dataBs.query(qur,[req.body, req.params.id],
             (err)=> {
@@ -207,7 +207,7 @@ class Product {
         const qur = 
         `
         DELETE FROM Products
-        WHERE id = ?; `
+        WHERE prodID = ?; `
         dataBs.query(qur,[req.params.id], (err)=> {
             if(err) res.status(400).json({err: "The record was not found."});
             res.status(200).json({message: "A product was deleted."});
@@ -216,24 +216,8 @@ class Product {
 
 }
 
-// class Cart{
-//     getCartItems(req, res){
-//         const qur = `SELECT p.id, p.prodName, p.prodDescription, 
-//         p.price, p.imgURL, u.userID
-//         FROM Products p
-//         INNER JOIN Users u
-//         USING prodID;`;
-//         dataBs.query(qur, [req.params.id], (err, results)=> {
-//             if(err) throw err;
-//             res.status(200).json({results: results})
-//         });
-
-//     }
-
-// }
 // Export User and Product class
 module.exports = {
     User, 
     Product
-    // Cart
 }

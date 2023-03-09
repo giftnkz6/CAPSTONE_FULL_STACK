@@ -4,6 +4,7 @@ const dataBs = require('../config');
 const {hash, compare, hashSync } = require('bcrypt');
 // Middleware for creating a token
 const {newToken} = require('../middleware/AuthenticatedUser');
+
 // User 
 class User {
     login(req, res) {
@@ -83,20 +84,19 @@ class User {
     }
     async newUser(req, res) {
         //Payload req.body to fetch data from user Payload = is an information coming from the user
-        let info = req.body;
         // Hashing user password
-        info.userPass = await 
-        hash(info.userPass, 15);
+        req.body.userPass = await 
+        hash(req.body.userPass, 15);
         // This information will be used for authentication.
         let user = {
-            emailAdd: info.emailAdd,
-            userPass: info.userPass
+            emailAdd: req.body.emailAdd,
+            userPass: req.body.userPass
         }
         // sql query
         const qur =
         `INSERT INTO Users
         SET ?;`;
-        dataBs.query(qur, [info], (err)=> {
+        dataBs.query(qur, [req.body], (err)=> {
             if(err) {
                 res.status(401).json({err});
             }else {
@@ -146,10 +146,11 @@ class User {
         })    
     }
 }
+
 // Product
 class Product {
     getProducts(req, res) {
-        const qur = `SELECT id, prodName, prodDescription, 
+        const qur = `SELECT prodID, prodName, prodDescription, 
         category, price, prodQuantity, imgURL
         FROM Products;`;
         dataBs.query(qur, (err, results)=> {
@@ -158,10 +159,10 @@ class Product {
         });
     }
    getProduct(req, res) {
-        const qur = `SELECT id, prodName, prodDescription, 
+        const qur = `SELECT prodID, prodName, prodDescription, 
         category, price, prodQuantity, imgURL
         FROM Products
-        WHERE id = ?;`;
+        WHERE prodID = ?;`;
         dataBs.query(qur, [req.params.id], (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
@@ -185,12 +186,13 @@ class Product {
         );    
 
     }
+    
     editProduct(req, res) {
         const qur = 
         `
         UPDATE Products
         SET ?
-        WHERE id = ?
+        WHERE prodID = ?
         `;
         dataBs.query(qur,[req.body, req.params.id],
             (err)=> {
@@ -207,7 +209,7 @@ class Product {
         const qur = 
         `
         DELETE FROM Products
-        WHERE id = ?; `
+        WHERE prodID = ?; `
         dataBs.query(qur,[req.params.id], (err)=> {
             if(err) res.status(400).json({err: "The record was not found."});
             res.status(200).json({message: "A product was deleted."});
@@ -216,23 +218,44 @@ class Product {
 
 }
 
-// class Cart{
-//     getCart(req, res){
-//         const qur = `SELECT p.id, p.prodName, p.prodDescription, 
-//         p.price, p.imgURL
-//         FROM Products p
-//         INNER JOIN Cart
-//         USING prodID;`;
-//         dataBs.query(qur, [req.params.id], (err, results)=> {
-//             if(err) throw err;
-//             res.status(200).json({results: results})
-//         });
+// Cart
+class Cart {
+    getCartItems(req, res) {
+        const qur = `SELECT p.imgURL, p.prodName, p.prodDescription, p.price, c.cID
+        FROM Users u
+        JOIN Cart c
+        USING (userID)
+        JOIN Products p
+        USING (prodID)
+        WHERE userID=?;`;
 
-//     }
+        dataBs.query(qur,[req.params.id],(err, data) =>{
+            if (err) throw err;
+            else res.status(200).json({results: data})
+        })
+    }
 
-// }
+    addToCart() {
+        const qur = `INSERT INTO Cart
+        SET ?;`;
+        dataBs.query(qur,[req.body, req.params.id],
+            (err)=> {
+                if(err){
+                    res.status(400).json({err: "Unable to update a record."});
+                }else {
+                    res.status(200).json({message: "Product updated"});
+                }
+            }
+        );
+
+    }
+
+
+}
+
 // Export User and Product class
 module.exports = {
     User, 
-    Product
+    Product,
+    Cart
 }

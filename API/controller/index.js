@@ -6,13 +6,13 @@ const bodyParser = require('body-parser');
 // Router
 const route = express.Router();
 // Models
-const {User, Product, Cart} = require('../model');
+const {User, Product} = require('../model');
 // Create a user instance
 const user = new User();
 // Product instance
 const product = new Product();
-
-// const cart = new Cart();
+// Cart instance
+const cart = new Cart();
 
 route.get('/', (req, res)=>{
     res.status(200).sendFile(path.join(__dirname, '../view/index.html'));
@@ -65,8 +65,21 @@ route.delete('/product/:id', (req, res)=> {
     product.removeProduct(req, res);
 })
 
-// route.get('/users/:id/carts', (req, res) =>{
-//     cart.getCart(req, res);
-// })
+// Get items in the Cart
+route.get('/user/:id/carts', (req, res) =>{
+    cart.getCartItems(req, res);
+})
+
+route.post('/user/:id/cart', (req, res)=> {
+    cart.addToCart(req, res);
+})
+
+route.put('/user/:id/cart/:id', (req, res)=> {
+    cart.addToCart(req, res);
+})
+
+route.delete('/user/:id/cart', (req, res)=> {
+    cart.addToCart(req, res);
+})
 
 module.exports = route;

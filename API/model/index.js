@@ -228,7 +228,7 @@ class Cart {
         WHERE userID=?;`;
 
         dataBs.query(qur,[req.params.id],(err, data) =>{
-            if (cart === "") res.status(200).json({message: "The cart is empty"});
+            if (err) throw err;
             else res.status(200).json({results: data})
         })
     }

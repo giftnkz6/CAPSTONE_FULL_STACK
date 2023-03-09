@@ -4,6 +4,7 @@ const dataBs = require('../config');
 const {hash, compare, hashSync } = require('bcrypt');
 // Middleware for creating a token
 const {newToken} = require('../middleware/AuthenticatedUser');
+
 // User 
 class User {
     login(req, res) {
@@ -145,6 +146,7 @@ class User {
         })    
     }
 }
+
 // Product
 class Product {
     getProducts(req, res) {
@@ -216,8 +218,34 @@ class Product {
 
 }
 
+// Cart
+class Cart {
+    getCartItems(req, res) {
+        const qur = `SELECT p.imgURL, p.prodName, p.prodDescription, p.price, c.cID
+        FROM Users u
+        JOIN Cart c
+        USING (userID)
+        JOIN Products p
+        USING (prodID)
+        WHERE userID=?;`;
+
+        dataBs.query(qur,[req.params.id],(err, data) =>{
+            if (err) throw err;
+            else res.status(200).json({results: data})
+        })
+    }
+
+    addToCart() {
+        const qur = ""
+
+    }
+
+
+}
+
 // Export User and Product class
 module.exports = {
     User, 
-    Product
+    Product,
+    Cart
 }

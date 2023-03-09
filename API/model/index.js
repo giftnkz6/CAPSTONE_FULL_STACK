@@ -221,12 +221,10 @@ class Product {
 // Cart
 class Cart {
     getCartItems(req, res) {
-        const qur = `SELECT p.imgURL, p.prodName, p.prodDescription, p.price, c.cID
+        const qur = `SELECT imgUrl, prodName, prodDescription, price, c.cID
         FROM Users u
-        JOIN Cart c
+        INNER JOIN Cart c
         USING (userID)
-        JOIN Products p
-        USING (prodID)
         WHERE userID=?;`;
 
         dataBs.query(qur,[req.params.id],(err, data) =>{
@@ -236,8 +234,20 @@ class Cart {
     }
 
     addToCart() {
-        const qur = ""
-
+        const qur = 
+        `
+        INSERT INTO Cart
+        SET ?;
+        `;
+        dataBs.query(qur,[req.body],
+            (err)=> {
+                if(err){
+                    res.status(400).json({err: "Could not add to the cart"});
+                }else {
+                    res.status(200).json({message: "Added to the cart"});
+                }
+            }
+        );   
     }
 
 

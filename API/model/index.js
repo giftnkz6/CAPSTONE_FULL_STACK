@@ -253,7 +253,7 @@ class Cart {
 
 }
 
-// Export User and Product class
+// Export User, Product and Cart class
 module.exports = {
     User, 
     Product,

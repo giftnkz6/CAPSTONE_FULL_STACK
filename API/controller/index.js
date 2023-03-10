@@ -70,7 +70,7 @@ route.get('/user/:id/carts', (req, res) =>{
     cart.getCartItems(req, res);
 })
 
-route.post('/user/:id/cart', (req, res)=> {
+route.post('/user/:id/cart', parser.json(), (req, res)=> {
     cart.addToCart(req, res);
 })
 

@@ -2,7 +2,7 @@ const express = require('express');
 // path
 const path = require('path');
 // body-parser
-const parser = require('body-parser');
+const bodyParser = require('body-parser');
 // Router
 const route = express.Router();
 // Models
@@ -70,7 +70,7 @@ route.get('/user/:id/carts', (req, res) =>{
     cart.getCartItems(req, res);
 })
 
-route.post('/user/:id/cart', parser.json(), (req, res)=> {
+route.post('/user/:id/cart', bodyParser.json(), (req, res)=> {
     cart.addToCart(req, res);
 })
 

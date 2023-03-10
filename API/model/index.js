@@ -221,14 +221,14 @@ class Product {
 // Cart
 class Cart {
     getCartItems(req, res) {
-        const qur = `SELECT cID, imgURL, prodName, prodDescription, price,
+        const qur = `SELECT imgURL, prodName, prodDescription, price,
         FROM Carts 
         INNER JOIN Products 
         ON Carts.prodID = Products.prodID
         WHERE Carts.userID=${req.params.id};`;
 
         dataBs.query(qur,(err, data) =>{
-            if(!Carts) res.status(400).json({err: "The Cart is empty"});
+            if(Carts==="") res.status(400).json({err: "The Cart is empty"});
             else res.status(200).json({results: data})
         })
     }

@@ -74,9 +74,9 @@ route.post('/user/:id/cart', bodyParser.json(), (req, res)=> {
     cart.addToCart(req, res);
 })
 
-// route.put('/user/:id/cart/:id', (req, res)=> {
-//     cart.addToCart(req, res);
-// })
+route.put('/user/:id/cart/:id', (req, res)=> {
+    cart.editCart(req, res);
+})
 
 route.delete('/user/:id/cart', (req, res)=> {
     cart.removeCart(req, res);

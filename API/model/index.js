@@ -264,6 +264,24 @@ class Cart {
         })
     }
 
+    editCart(req, res) {
+        const qur = 
+        `
+        UPDATE Carts
+        SET ?
+        WHERE cID = ?
+        `;
+        dataBs.query(qur,[req.body, req.params.id],
+            (err)=> {
+                if(err){
+                    res.status(400).json({err: "Unable to update a record."});
+                }else {
+                    res.status(200).json({message: "Product updated"});
+                }
+            }
+        );    
+
+    }
 
 }
 

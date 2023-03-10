@@ -224,7 +224,7 @@ class Cart {
         const qur = `SELECT imgUrl, prodName, prodDescription, price, c.cID, c.cart
         FROM Carts 
         INNER JOIN Products 
-        USING (prodID)
+        ON Carts.prodID = Products.prodID
         WHERE Carts.userID=${req.params.id};`;
 
         dataBs.query(qur,(err, data) =>{

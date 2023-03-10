@@ -78,8 +78,8 @@ route.post('/user/:id/cart', (req, res)=> {
 //     cart.addToCart(req, res);
 // })
 
-// route.delete('/user/:id/cart', (req, res)=> {
-//     cart.addToCart(req, res);
-// })
+route.delete('/user/:id/cart', (req, res)=> {
+    cart.removeCart(req, res);
+})
 
 module.exports = route;

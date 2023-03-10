@@ -228,7 +228,10 @@ class Cart {
         WHERE Carts.userID=${req.params.id};`;
 
         dataBs.query(qur,(err, data) =>{
-            if(err) res.status(400).json({err,err: "The Cart is empty"});
+            if(err){
+                console.log(err);
+                res.status(400).json({err: "The Cart is empty"});
+            } 
             else res.status(200).json({results: data})
         })
     }

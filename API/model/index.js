@@ -233,7 +233,7 @@ class Cart {
         })
     }
 
-    addToCart() {
+    addToCart(req, res) {
         const qur = 
         `
         INSERT INTO Carts

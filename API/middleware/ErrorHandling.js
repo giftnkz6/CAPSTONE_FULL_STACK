@@ -5,7 +5,8 @@ function errorHandling(err, req, res, next) {
             {
                 status: status,
                 err: "An error has occurred. Please try again later."
-            }
+            },
+            console.log(err)
         )
     }
     next()

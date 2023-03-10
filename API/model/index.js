@@ -256,7 +256,7 @@ class Cart {
         DELETE FROM Carts
         WHERE cID = ?; `
         dataBs.query(qur,[req.params.id], (err)=> {
-            if(err) res.status(400).json({err: "The item was not found."});
+            if(Carts === "") res.status(400).json({err: "The item was not found."});
             res.status(200).json({message: "A product was deleted."});
         })
     }

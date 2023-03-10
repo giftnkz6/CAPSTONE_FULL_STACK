@@ -74,12 +74,12 @@ route.post('/user/:id/cart', (req, res)=> {
     cart.addToCart(req, res);
 })
 
-route.put('/user/:id/cart/:id', (req, res)=> {
-    cart.addToCart(req, res);
-})
+// route.put('/user/:id/cart/:id', (req, res)=> {
+//     cart.addToCart(req, res);
+// })
 
-route.delete('/user/:id/cart', (req, res)=> {
-    cart.addToCart(req, res);
-})
+// route.delete('/user/:id/cart', (req, res)=> {
+//     cart.addToCart(req, res);
+// })
 
 module.exports = route;

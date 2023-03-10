@@ -222,12 +222,12 @@ class Product {
 class Cart {
     getCartItems(req, res) {
         const qur = `SELECT imgUrl, prodName, prodDescription, price, c.cID, c.cart
-        FROM Users u
-        INNER JOIN Cart c
-        USING (userID)
-        WHERE userID=?;`;
+        FROM Carts 
+        INNER JOIN Products 
+        USING (prodID)
+        WHERE Carts.userID=${req.params.id};`;
 
-        dataBs.query(qur,[req.params.id],(err, data) =>{
+        dataBs.query(qur,(err, data) =>{
             if (err) throw err;
             else res.status(200).json({results: data})
         })
@@ -236,7 +236,7 @@ class Cart {
     addToCart() {
         const qur = 
         `
-        INSERT INTO Cart
+        INSERT INTO Carts
         SET ?;
         `;
         dataBs.query(qur,[req.body],

@@ -221,7 +221,7 @@ class Product {
 // Cart
 class Cart {
     getCartItems(req, res) {
-        const qur = `SELECT imgUrl, prodName, prodDescription, price, cID,
+        const qur = `SELECT cID, imgUrl, prodName, prodDescription, price,
         FROM Carts 
         INNER JOIN Products 
         ON Carts.prodID = Products.prodID
@@ -248,6 +248,17 @@ class Cart {
                 }
             }
         );   
+    }
+
+    removeCart(req, res) {
+        const qur = 
+        `
+        DELETE FROM Carts
+        WHERE cID = ?; `
+        dataBs.query(qur,[req.params.id], (err)=> {
+            if(err) res.status(400).json({err: "The item was not found."});
+            res.status(200).json({message: "A product was deleted."});
+        })
     }
 
 

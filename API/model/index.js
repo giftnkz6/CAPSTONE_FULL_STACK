@@ -221,7 +221,7 @@ class Product {
 // Cart
 class Cart {
     getCartItems(req, res) {
-        const qur = `SELECT imgURL, prodName, prodDescription, price,
+        const qur = `SELECT imgURL, prodName, prodDescription, price
         FROM Carts 
         INNER JOIN Products 
         ON Carts.prodID = Products.prodID

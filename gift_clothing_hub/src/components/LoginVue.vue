@@ -21,9 +21,10 @@ export default {
 
 <style scoped>
 .container{
-    width: 700px;
+    width: 670px;
     margin-top: 8rem;
     background-color: whitesmoke;
+    border-radius: 5%;
 }
 form{
     width: 500px;
@@ -31,7 +32,7 @@ form{
 }
 
 input{
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 h3{
     margin-bottom: 1rem;

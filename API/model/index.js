@@ -151,7 +151,7 @@ class User {
 class Product {
     getProducts(req, res) {
         const qur = `SELECT prodID, prodName, prodDescription, 
-        category, price, prodQuantity, imgURL
+        category, price, prodQuantity, imgURL, color
         FROM Products;`;
         dataBs.query(qur, (err, results)=> {
             if(err) throw err;
@@ -160,7 +160,7 @@ class Product {
     }
    getProduct(req, res) {
         const qur = `SELECT prodID, prodName, prodDescription, 
-        category, price, prodQuantity, imgURL
+        category, price, prodQuantity, imgURL, color
         FROM Products
         WHERE prodID = ?;`;
         dataBs.query(qur, [req.params.id], (err, results)=> {
@@ -221,7 +221,7 @@ class Product {
 // Cart
 class Cart {
     getCartItems(req, res) {
-        const qur = `SELECT imgURL, prodName, prodDescription, price
+        const qur = `SELECT imgURL, prodName, prodDescription, price, color
         FROM Carts 
         INNER JOIN Products 
         ON Carts.prodID = Products.prodID

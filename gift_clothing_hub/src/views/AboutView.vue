@@ -1,10 +1,10 @@
 <template>
   <div class="about">
-    <div class="wrap">
+    <!-- <div class="wrap">
       <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quae, exercitationem tempore dolore deserunt in eligendi nostrum quaerat tenetur, maxime alias aperiam non minus voluptas magni molestias? A, at pariatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur possimus facilis reprehenderit culpa illo nesciunt consequuntur odio nam, necessitatibus porro?
       </p>
     </div>
-    <img class="img" src="https://i.postimg.cc/nzcxMrxg/Screenshot-2023-03-13-095116.png" alt="">
+    <img class="img" src="https://i.postimg.cc/nzcxMrxg/Screenshot-2023-03-13-095116.png" alt=""> -->
   </div>
 
   <!-- <img class="adidas" src="https://cdn.dribbble.com/users/392441/screenshots/2606850/adidas.gif" alt="" srcset=""> -->

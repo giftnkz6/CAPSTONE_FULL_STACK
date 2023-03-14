@@ -2,7 +2,7 @@
     <header>
         <nav class="navbar navbar-expand-lg w-100">
             <div class="container-fluid">
-                <a href="#home"><img class="logo" src="https://i.postimg.cc/nzcxMrxg/Screenshot-2023-03-13-095116.png" alt="logo"></a>
+                <a href="#home"><router-link to="/"><img class="logo" src="https://i.postimg.cc/nzcxMrxg/Screenshot-2023-03-13-095116.png" alt="logo"></router-link></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -12,7 +12,7 @@
                         <li><a href="#about"></a><router-link to="/about">About</router-link></li>
                         <li><a href="#login"></a><router-link to="/login">Login</router-link></li>
                         <li><a href="#register"></a><router-link to="/register">Register</router-link></li>
-                        <li><a href="#products"></a><router-link to="/products">Shop</router-link></li>
+                        <li><a href="#shop"></a><router-link to="/shop">Shop</router-link></li>
                         <li v-show="userRole"><a href="#admin"></a><router-link to="/admin">Admin</router-link></li>
                         <li><a href="#contact"></a><router-link to="/contact">Contact</router-link></li>
                     </ul>
@@ -43,7 +43,7 @@
         margin-bottom: 2rem;
     }
     a{
-        color: blueviolet;
+        
         font-size: larger;
     }
     li{
@@ -58,7 +58,7 @@
 }
 .navbar {
     z-index: 3;
-    background-color: white;
+    /* background-color: #00425A; */
     /* position: fixed; */
 }
 .navbar ul{

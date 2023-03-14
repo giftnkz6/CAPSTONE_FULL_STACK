@@ -1,78 +1,73 @@
 <template>
     <div class="register">
-        <form action="">
+        <form action="" @submit.prevent="signUp">
             <h1>Register</h1>
             <div class="mb-3">
-                <input type="text" v-model="firstName" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="First Name"
+                <input type="text" v-model="payload.firstName" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="First Name"
                     required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="lastName" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Last Name"
+                <input type="text" v-model="payload.lastName" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Last Name"
                     required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="gender" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Gender"
+                <input type="text" v-model="payload.gender" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Gender"
                     required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="cellphoneNumber" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                <input type="text" v-model="payload.cellphoneNumber" class="form-control" id="exampleFormControlTextarea1" rows="3"
                     placeholder="Cellphone number" required>
             </div>
             <div class="mb-3">
-                <input type="email" v-model="emailAdd" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+                <input type="email" v-model="payload.emailAdd" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
                     required>
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password"
+                <input type="password" v-model="payload.userPass"  class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password"
                     required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="userProfile" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                <input type="text" v-model="payload.userProfile" class="form-control" id="exampleFormControlTextarea1" rows="3"
                     placeholder="Profile Picture url" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Join Date"
+                <input type="text" v-model="payload.joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Join Date"
                     required>
             </div>
-            <button @click="register" type="submit" class="btn btn-secondary">Register</button>
-
+            <button type="submit" class="btn btn-secondary">Register</button>
         </form>
 
     </div>
 </template>
 
 <script>
+import {computed} from '@vue/runtime-core';
+import { useStore  } from 'vuex';
 export default {
-    name: "RegisterVue",
-
-    data(){
-        return {
-            firstName: "",
-            lastName: "",
-            gender: "",
-            cellphoneNumber: "",
-            emailAdd: "",
-            userPass: "",
-            userProfile: "",
-            joinDate: ""
-        }
-    },
-
-    computed:{
-        register: function(){
-            this.$store.state.user
-        },
-        profile: function(){
-             alert(`Full Name: ${this.firstName} ${this.lastName}
-             Gender: ${this.gender}
-             email Address: ${this.emailAdd}`)
-        }
-    },
-
-    mounted() {
-        this.$store.dispatch("register")
+    setup() {
+      const payload = {
+          firstName: '',
+          lastName: '',
+          gender: '',
+          cellphoneNumber: '',
+          emailAdd: '',
+          userPass: '',
+          userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
+          joinDate: ''
+        };
+      const store = useStore();
+      const signUp = ()=> {
+          store.dispatch("register", payload);
+          store.dispatch("getUsers");
+      }
+      const userMsg = 
+      computed( ()=>store.state.message )
+      return {
+        payload,
+        userMsg,
+        signUp
+      }
     }
-
 }
 </script>
 
@@ -86,9 +81,11 @@ form {
     width: 620px;
     height: 560px;
     margin: auto;
-    /* box-shadow: 0 0 10px #c1c1c1; */
-    /* background-color: whitesmoke; */
+    box-shadow: 0 0 10px #c1c1c1;
+    background-color: whitesmoke;
+    border-radius: 3rem;
     margin-bottom: 3rem;
+    margin-top: 3rem;
 }
 
 @media screen and (max-width: 650px) {

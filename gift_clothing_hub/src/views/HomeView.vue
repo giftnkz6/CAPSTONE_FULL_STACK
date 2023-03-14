@@ -65,7 +65,7 @@ h1{
 }
 
 .background {
-  height: 85vh;
+  height: 95vh;
   width: 90vw;
   object-fit: cover;
 }

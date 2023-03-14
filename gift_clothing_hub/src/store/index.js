@@ -59,27 +59,7 @@ export default createStore({
         context.commit('setProduct', results);
       }
     },
-    register: async(context, payload) => {
-      const {firstName, lastName, gender, cellphoneNumber, emailAdd, userPass, userProfile, joinDate} = payload
-      const res = await fetch('${API}user',{
-        method: "POST",
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          gender,
-          cellphoneNumber,
-          emailAdd,
-          userPass,
-          userProfile,
-          joinDate
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => context.commit("setUser", json));
-      },
+
       async login(context, payload) {
         const res = await axios.post(`${API}login`, payload);
         const {result, err} = await res.data;
@@ -89,15 +69,16 @@ export default createStore({
           context.commit('setMessage', err)
         }
       },
-      // async register(context, payload) {
-      //   let res = await axios.post(`${API}register`, payload);
-      //   let {msg, err} = await res.data;
-      //   if(msg) {
-      //     context.commit('setMessage', msg);
-      //   }else{
-      //     context.commit('setMessage', err);
-      //   }
-      // },
+      
+      async register(context, payload) {
+        let res = await axios.post(`${API}register`, payload);
+        let {msg, err} = await res.data;
+        if(msg) {
+          context.commit('setMessage', msg);
+        }else{
+          context.commit('setMessage', err);
+        }
+      },
       async editUser (context, payload) {
         const res = await axios.put(`${API}editUser`, payload)
         const { msg, err } = await res.data
@@ -108,7 +89,7 @@ export default createStore({
         }
       },
       async editProduct (context, payload) {
-        const res = await axios.put(`${API}editProduct`, payload)
+        const res = await axios.put(`${backendURL}editProduct`, payload)
         const { msg, err } = await res.data
         if (msg) {
           context.commit('setProduct', msg)

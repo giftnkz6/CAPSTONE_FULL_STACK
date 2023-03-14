@@ -9,6 +9,7 @@
                 <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password" required>
             </div>
             <button type="submit" class="btn btn-secondary">Sign in</button>
+            <p>Don't have an account? <a href="#register"></a><router-link to="/register">Sign up</router-link></p>
         </form>
     </div>
 </template>
@@ -22,24 +23,35 @@ export default {
 <style scoped>
 .container{
     width: 670px;
+    /* width: 500px; */
     margin-top: 8rem;
     background-color: whitesmoke;
     border-radius: 5%;
+    margin-bottom: 7rem;
 }
 form{
     width: 500px;
+    /* width: 380px; */
     margin: auto;
 }
 
 input{
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
+
 h3{
     margin-bottom: 1rem;
     margin-top: 2rem;
 }
+
 button{
     margin-bottom: 2rem ;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
 }
 
 @media screen and (max-width: 580px) {

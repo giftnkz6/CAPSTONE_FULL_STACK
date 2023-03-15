@@ -7,7 +7,7 @@
                     <h5 class="card-title">{{ product.prodName }}</h5>
                     <p>{{ product.color }}</p>
                     <p class="card-text">R{{ product.price }}</p>
-                    <a href="#" class="btn btn-primary">More Details</a>
+                    <a href="#" @click="product" class="btn btn-primary">More Details</a>
                 </div>
             </div>
         </div>

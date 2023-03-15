@@ -1,38 +1,38 @@
 <template>
     <div class="register">
-        <form action="" @submit.prevent="signUp">
+        <form action="" @submit.prevent="register">
             <h1>Register</h1>
             <div class="mb-3">
-                <input type="text" v-model="payload.firstName" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="First Name"
-                    required>
+                <input type="text" v-model="firstName" class="form-control" id="exampleFormControlTextarea1"
+                    rows="3" placeholder="First Name" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="payload.lastName" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Last Name"
-                    required>
+                <input type="text" v-model="lastName" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Last Name" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="payload.gender" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Gender"
-                    required>
+                <input type="text" v-model="gender" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Gender" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="payload.cellphoneNumber" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                    placeholder="Cellphone number" required>
+                <input type="text" v-model="cellphoneNumber" class="form-control" id="exampleFormControlTextarea1"
+                    rows="3" placeholder="Cellphone number" required>
             </div>
             <div class="mb-3">
-                <input type="email" v-model="payload.emailAdd" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
-                    required>
+                <input type="email" v-model="emailAdd" class="form-control" id="exampleFormControlInput1"
+                    placeholder="name@example.com" required>
             </div>
             <div class="mb-3">
-                <input type="password" v-model="payload.userPass"  class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password"
-                    required>
+                <input type="password" v-model="userPass" class="form-control" id="exampleFormControlTextarea1"
+                    rows="3" placeholder="Password" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="payload.userProfile" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                    placeholder="Profile Picture url" required>
+                <input type="text" v-model="userProfile" class="form-control" id="exampleFormControlTextarea1"
+                    rows="3" placeholder="Profile Picture url" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="payload.joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Join Date"
-                    required>
+                <input type="text" v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Join Date" required>
             </div>
             <button type="submit" class="btn btn-secondary">Register</button>
         </form>
@@ -41,34 +41,67 @@
 </template>
 
 <script>
-import {computed} from '@vue/runtime-core';
-import { useStore  } from 'vuex';
+// import {computed} from '@vue/runtime-core';
+// import { useStore  } from 'vuex';
+// export default {
+//     setup() {
+//       const payload = {
+//           firstName: '',
+//           lastName: '',
+//           gender: '',
+//           cellphoneNumber: '',
+//           emailAdd: '',
+//           userPass: '',
+//           userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
+//           joinDate: ''
+//         };
+//       const store = useStore();
+//       const signUp = ()=> {
+//           store.dispatch("register", payload);
+//           store.dispatch("getUsers");
+//       }
+//       const userMsg = 
+//       computed( ()=>store.state.message )
+//       return {
+//         payload,
+//         userMsg,
+//         signUp
+//       }
+//     }
+// }
 export default {
-    setup() {
-      const payload = {
-          firstName: '',
-          lastName: '',
-          gender: '',
-          cellphoneNumber: '',
-          emailAdd: '',
-          userPass: '',
-          userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
-          joinDate: ''
+    data() {
+        return {
+            firstName: '',
+            lastName: '',
+            gender: '',
+            cellphoneNumber: '',
+            emailAdd: '',
+            userPass: '',
+            userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
+            joinDate: ''
         };
-      const store = useStore();
-      const signUp = ()=> {
-          store.dispatch("register", payload);
-          store.dispatch("getUsers");
-      }
-      const userMsg = 
-      computed( ()=>store.state.message )
-      return {
-        payload,
-        userMsg,
-        signUp
-      }
-    }
-}
+    },
+    computed: {
+        user() {
+            return this.$store.state.user;
+        },
+    },
+    methods: {
+        register() {
+            return this.$store.dispatch("register", {
+                firstName: this.firstName,
+                lastName: this.lastName,
+                gender: this.gender,
+                cellphoneNumber: this.cellphoneNumber,
+                emailAdd: this.emailAdd,
+                userPass: this.userPass,
+                userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
+                joinDate: this.joinDate
+            });
+        },
+    },
+};
 </script>
 
 <style scoped>
@@ -77,7 +110,7 @@ form {
     margin: auto;
 }
 
-.register{
+.register {
     width: 620px;
     height: 560px;
     margin: auto;
@@ -89,105 +122,105 @@ form {
 }
 
 @media screen and (max-width: 650px) {
-    .register{
-        width: 600px; 
+    .register {
+        width: 600px;
     }
-    
+
 }
 
 @media screen and (max-width: 620px) {
-    .register{
-        width: 580px; 
+    .register {
+        width: 580px;
     }
-    
+
 }
 
 @media screen and (max-width: 600px) {
-    .register{
-        width: 540px; 
+    .register {
+        width: 540px;
     }
 
-    form{
+    form {
         width: 480px;
     }
-    
+
 }
 
 @media screen and (max-width: 560px) {
-    .register{
-        width: 500px; 
+    .register {
+        width: 500px;
     }
 
-    form{
+    form {
         width: 430px;
     }
-    
+
 }
 
 @media screen and (max-width: 520px) {
-    .register{
-        width: 480px; 
+    .register {
+        width: 480px;
     }
 
-    form{
+    form {
         width: 400px;
     }
-    
+
 }
 
 @media screen and (max-width: 500px) {
-    .register{
-        width: 420px; 
+    .register {
+        width: 420px;
     }
 
-    form{
+    form {
         width: 360px;
     }
-    
+
 }
 
 @media screen and (max-width: 440px) {
-    .register{
-        width: 400px; 
+    .register {
+        width: 400px;
     }
 
-    form{
+    form {
         width: 330px;
     }
-    
+
 }
 
 @media screen and (max-width: 410px) {
-    .register{
-        width: 360px; 
+    .register {
+        width: 360px;
     }
 
-    form{
+    form {
         width: 240px;
     }
-    
+
 }
 
 @media screen and (max-width: 380px) {
-    .register{
-        width: 320px; 
+    .register {
+        width: 320px;
     }
 
-    form{
+    form {
         width: 240px;
     }
-    
+
 }
 
 @media screen and (max-width: 330px) {
-    .register{
-        width: 270px; 
+    .register {
+        width: 270px;
     }
 
-    form{
+    form {
         width: 220px;
     }
-    
+
 }
 </style>
 

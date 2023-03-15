@@ -1,23 +1,69 @@
 <template>
+    <div v-if="user"><h3>Welcome {{ user.firstName }} {{ user.lastName }}</h3></div>
     <div class="container">
-        <form action="">
+        <form action="" @submit.prevent="login">
             <h3>SIGN IN</h3>
             <div class="mb-3">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                <input type="email" v-model="emailAdd" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
             </div>
             <div class="mb-3">
-                <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Password" required>
+                <input class="form-control" v-model="userPass" id="exampleFormControlTextarea1" rows="3" placeholder="Password" required>
             </div>
             <button type="submit" class="btn btn-secondary">Sign in</button>
             <p>Don't have an account? <a href="#register"></a><router-link to="/register">Sign up</router-link></p>
         </form>
+        
     </div>
 </template>
 
 <script>
+// import {computed} from '@vue/runtime-core';
+// import { useStore  } from 'vuex';
+// export default {
+//     name: "LoginVue",
+//     setup() {
+//       const payload = {
+//           emailAdd: '',
+//           userPass: '',
+//         };
+//       const store = useStore();
+//       const signIn = ()=> {
+//           store.dispatch("login", payload);
+//           store.dispatch("getUsers");
+//       }
+//       const userMsg = 
+//       computed( ()=>store.state.message )
+//       return {
+//         payload,
+//         userMsg,
+//         signIn
+//       }
+//     }
+// }
 export default {
-    name: "LoginVue"
-}
+    
+    computed: {
+        user() {
+            return this.$store.state.user;
+        },
+    },
+
+    data() {
+        return {
+            emailAdd: "",
+            userPass: "",
+        };
+    },
+
+    methods: {
+        login() {
+            this.$store.dispatch("login", {
+                emailAdd: this.emailAdd,
+                userPass: this.userPass,
+            });
+        },
+    },
+};
 </script>
 
 <style scoped>

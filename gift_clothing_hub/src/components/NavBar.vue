@@ -31,9 +31,6 @@
         },
 
         methods:{
-            counter: function(){
-                
-            }
         }
     }
 </script>

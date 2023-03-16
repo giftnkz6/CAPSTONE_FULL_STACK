@@ -1,37 +1,42 @@
 <template>
   <div class="about">
-    <!-- <div class="wrap">
+    <img class="img" src="https://i.postimg.cc/nzcxMrxg/Screenshot-2023-03-13-095116.png" alt="">
+    <div class="wrap">
+      <h2 class="text">CLOTHING HUB</h2>
       <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quae, exercitationem tempore dolore deserunt in eligendi nostrum quaerat tenetur, maxime alias aperiam non minus voluptas magni molestias? A, at pariatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur possimus facilis reprehenderit culpa illo nesciunt consequuntur odio nam, necessitatibus porro?
       </p>
     </div>
-    <img class="img" src="https://i.postimg.cc/nzcxMrxg/Screenshot-2023-03-13-095116.png" alt=""> -->
   </div>
-
-  <!-- <img class="adidas" src="https://cdn.dribbble.com/users/392441/screenshots/2606850/adidas.gif" alt="" srcset=""> -->
 </template>
 <style>
 
-  .adidas{
-    width: 100vw;
-    height: 20rem;
-  }
-
   .img{
     width: 28rem;
-    margin-right: 4rem;
+    height: 28rem;
+    margin-left: 4rem;
+    margin-bottom: 3rem;
   }
   .about{
     display: flex;
   }
 
+  h2{
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
   .text{
-    margin-top: 5rem;
-    margin-left: 5rem;
+    /* margin-top: 5rem; */
+    /* margin-left: 5rem; */
     width: 30rem;
+  }
+
+  p{
+    color: black;
   }
   .wrap{
     width: 40rem;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     margin: auto;
   }
 </style>

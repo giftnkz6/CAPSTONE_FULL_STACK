@@ -7,7 +7,6 @@ export default createStore({
     user: null,
     products: null,
     product: null,
-    loadSpinner: true
   },
   mutations: {
     setUsers(state, values){
@@ -21,9 +20,6 @@ export default createStore({
     },
     setProduct(state, value){
       state.product = value
-    },
-    setSpinner(state, value) {
-      state.loadSpinner = value
     },
   },
   actions: {
@@ -51,12 +47,12 @@ export default createStore({
         context.commit('setUser', results);
       }
     },
-    getProduct: async(context) => {
-      const res = await axios.get(`${API}product`);
+    getProduct: async(context,id) => {
+      const res = await axios.get(`${API}product/${id}`);
       const {results} = await res.data;
       if(results) {
-        console.log(results)
-        context.commit('setProduct', results);
+        console.log(results[0])
+        context.commit('setProduct', results[0]);
       }
     },
 
@@ -79,8 +75,17 @@ export default createStore({
           context.commit('setMessage', err);
         }
       },
+      async newProduct(context, payload) {
+        let res = await axios.post(`${API}product`, payload);
+        let {msg, err} = await res.data;
+        if(msg) {
+          context.commit('setMessage', msg);
+        }else{
+          context.commit('setMessage', err);
+        }
+      },
       async editUser (context, payload) {
-        const res = await axios.put(`${API}editUser`, payload)
+        const res = await axios.put(`${API}editUser/${id}`, payload)
         const { msg, err } = await res.data
         if (msg) {
           context.commit('setUser', msg)
@@ -89,7 +94,7 @@ export default createStore({
         }
       },
       async editProduct (context, payload) {
-        const res = await axios.put(`${backendURL}editProduct`, payload)
+        const res = await axios.put(`${backendURL}editProduct/${id}`, payload)
         const { msg, err } = await res.data
         if (msg) {
           context.commit('setProduct', msg)
@@ -97,8 +102,17 @@ export default createStore({
           context.commit('setMessage', err)
         }
       },
+      async deleteUser (context, payload) {
+        const res = await axios.delete(`${API}deleteUser/${id}`, payload)
+        const { msg, err } = await res.data
+        if (msg) {
+          context.commit('setUser', msg)
+        } else {
+          context.commit('setMessage', err)
+        }
+      },
       async deleteProduct (context, payload) {
-      const res = await axios.delete(`${API}deleteProduct`, payload)
+      const res = await axios.delete(`${API}deleteProduct/${id}`, payload)
       const { msg, err } = await res.data
       if (msg) {
         context.commit('setProduct', msg)

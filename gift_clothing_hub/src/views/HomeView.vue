@@ -139,6 +139,10 @@ img{
     display: grid;
     grid-template-columns: 1fr;
   }
+
+  img{
+    width: 10rem;
+  }
   .card{
     width: 13rem;
     margin-right: 3rem;

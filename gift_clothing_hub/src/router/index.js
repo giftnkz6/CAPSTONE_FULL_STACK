@@ -6,6 +6,7 @@ import LoginView from '../views/LoginView.vue'
 import ContactView from '../views/ContactView'
 import ShopView from '../views/ShopView'
 import AdminView from '../views/AdminView'
+import SingleProduct from '../views/SingleProduct'
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     path: '/shop',
     name: 'shop',
     component: ShopView
+  },
+  {
+    path: '/product/:id',
+    name: 'product',
+    component: SingleProduct
   },
   {
     path: '/admin',

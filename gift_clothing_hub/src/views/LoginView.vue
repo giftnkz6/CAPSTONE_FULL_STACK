@@ -1,4 +1,5 @@
 <template>
+    <div v-if="user"><h3>Welcome {{ user.firstName }} {{ user.lastName }}</h3></div>
     <div class="container">
         <form action="" @submit.prevent="login">
             <h3>SIGN IN</h3>
@@ -11,7 +12,6 @@
             <button type="submit" class="btn btn-secondary">Sign in</button>
             <p>Don't have an account? <a href="#register"></a><router-link to="/register">Sign up</router-link></p>
         </form>
-        <div v-if="user"><h3>Welcome {{ user.firstName }} {{ user.lastName }}</h3></div>
     </div>
 </template>
 
@@ -19,18 +19,18 @@
 export default {
     name: "LoginView",
 
-    computed: {
-        user() {
-            return this.$store.state.user;
-        },
-    },
-
     data() {
         return {
             emailAdd: "",
             userPass: "",
         };
     },
+    computed: {
+        user() {
+            return this.$store.state.user;
+        },
+    },
+
 
     methods: {
         login() {

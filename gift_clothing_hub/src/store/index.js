@@ -79,13 +79,13 @@ export default createStore({
         let res = await axios.post(`${API}product`, payload);
         let {msg, err} = await res.data;
         if(msg) {
-          context.commit('setMessage', msg);
+          context.commit('setProduct', msg);
         }else{
           context.commit('setMessage', err);
         }
       },
       async editUser (context, payload) {
-        const res = await axios.put(`${API}editUser/${id}`, payload)
+        const res = await axios.put(`${API}user/${id}`, payload)
         const { msg, err } = await res.data
         if (msg) {
           context.commit('setUser', msg)
@@ -94,7 +94,7 @@ export default createStore({
         }
       },
       async editProduct (context, payload) {
-        const res = await axios.put(`${backendURL}editProduct/${id}`, payload)
+        const res = await axios.put(`${backendURL}product/${id}`, payload)
         const { msg, err } = await res.data
         if (msg) {
           context.commit('setProduct', msg)
@@ -103,7 +103,7 @@ export default createStore({
         }
       },
       async deleteUser (context, payload) {
-        const res = await axios.delete(`${API}deleteUser/${id}`, payload)
+        const res = await axios.delete(`${API}user/${id}`, payload)
         const { msg, err } = await res.data
         if (msg) {
           context.commit('setUser', msg)
@@ -112,7 +112,7 @@ export default createStore({
         }
       },
       async deleteProduct (context, payload) {
-      const res = await axios.delete(`${API}deleteProduct/${id}`, payload)
+      const res = await axios.delete(`${API}product/${id}`, payload)
       const { msg, err } = await res.data
       if (msg) {
         context.commit('setProduct', msg)

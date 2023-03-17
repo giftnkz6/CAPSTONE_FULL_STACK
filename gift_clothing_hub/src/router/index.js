@@ -7,6 +7,7 @@ import ContactView from '../views/ContactView'
 import ShopView from '../views/ShopView'
 import AdminView from '../views/AdminView'
 import SingleProduct from '../views/SingleProduct'
+import CartView from '../views/CartView'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/admin',
     name: 'admin',
     component: AdminView
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: CartView
   },
   {
     path: '/contact',

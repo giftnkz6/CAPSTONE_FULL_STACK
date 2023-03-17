@@ -12,15 +12,19 @@
         </div>
         <div v-else><SpinnerVue/></div>
     </div> -->
-    <div class="container">
+    <div class="container" v-if="product">
         <img :src="product.imgURL" alt="">
         <div class="wrap">
             <h2>{{ product.prodName }}</h2>
             <p>R{{ product.price  }}</p>
             <p>{{ product.prodDescription }}</p>
+            <p>{{ product.category }}</p>
             <p>{{ product.color }}</p>
-            <button type="button" class="btn btn-primary">Add to cart</button>
+            <button type="button" class="btn btn-secondary">Add to cart</button>
         </div>
+    </div>
+    <div v-else>
+        <SpinnerVue/>
     </div>
 </template>
 
@@ -45,11 +49,12 @@ export default {
 
 <style scoped>
     img{
-        width: 21rem;
+        width: 32rem;
+        margin-top: 3rem;
     }
     .container{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        margin-bottom: 8rem;
+        /* margin-bottom: 8rem; */
     }
 </style>

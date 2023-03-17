@@ -8,13 +8,14 @@
     </div>
   </div>
 </template>
-<style>
+
+<style scoped>
 
   .img{
     width: 28rem;
     height: 28rem;
     margin-left: 4rem;
-    margin-bottom: 3rem;
+    margin-top: 6rem;
   }
   .about{
     display: flex;
@@ -22,7 +23,7 @@
 
   h2{
     font-size: 3rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
   }
 
   .text{
@@ -38,5 +39,6 @@
     width: 40rem;
     /* background-color: aliceblue; */
     margin: auto;
+    margin-top: 15rem;
   }
 </style>

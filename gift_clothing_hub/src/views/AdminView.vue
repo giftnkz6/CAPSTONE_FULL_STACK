@@ -105,30 +105,36 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            <input v-model="prodName" class="form-control" id="exampleFormControlTextarea1" rows="3"
                                 placeholder="Product name">
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description">
+                            <input v-model="prodDescription" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Description">
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Category">
+                            <input v-model="category" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Category">
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Price">
+                            <input v-model="price" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Price">
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Quantity">
+                            <input v-model="prodQuantity" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Quantity">
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Image">
+                            <input v-model="imgURL" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Image">
                         </div>
                         <div class="mb-3">
-                            <input class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Color">
+                            <input v-model="color" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                placeholder="Color">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" @click="newProduct" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
                         <button type="button" class="btn btn-primary">Understood</button>
                     </div>
                 </div>
@@ -202,6 +208,31 @@ export default {
     components: {
         SpinnerVue
     },
+    data() {
+        return {
+            prodName: "",
+            prodDescription: "",
+            category: "",
+            price: "",
+            prodQuantity: "",
+            imgURL: "",
+            color: ""
+        }
+    },
+    methods: {
+        newProduct: function () {
+            return this.$store.dispatch("newProduct", {
+                prodName: this.prodName,
+                prodDescription: this.prodDescription,
+                category: this.category,
+                price: this.price,
+                prodQuantity: this.prodQuantity,
+                imgURL: this.imgURL,
+                color: this.color
+
+            })
+        }
+    },
     computed: {
         users() {
             return this.$store.state.users;
@@ -209,10 +240,15 @@ export default {
         products() {
             return this.$store.state.products;
         },
+
+        user() {
+            return this.$store.state.user;
+        }
     },
-    mounted() {
+    created() {
         this.$store.dispatch("getUsers")
         this.$store.dispatch("getProducts")
+        // this.$store.dispatch("deleteUser", this.$route.params.id)
     },
 
 }
@@ -220,7 +256,6 @@ export default {
 </script>
 
 <style scoped>
-
 img {
     width: 4rem;
 }
@@ -245,5 +280,4 @@ img {
 
 td {
     color: #1F8A70;
-}
-</style>
+}</style>

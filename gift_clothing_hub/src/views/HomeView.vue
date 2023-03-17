@@ -61,7 +61,7 @@ export default {
 
 h1{
   font: 8rem;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 }
 
 .background {

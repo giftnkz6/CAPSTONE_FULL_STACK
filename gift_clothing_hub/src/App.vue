@@ -1,6 +1,8 @@
 <template>
   <NavBar/>
-  <router-view/>
+  <div class="container-fluid min-vh-100" >
+    <router-view/>
+  </div>
   <FooterVue/>
 </template>
 
@@ -30,12 +32,11 @@ export default {
   background-color: lavender;
   /* background-color:  #DCAE96; */
   /* background-color: #6699CC; */
-  /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEFBAx2e4qwd86As1JTqrQp-XN0hiqHk42nQ&usqp=CAU"); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
 }
 
+body::-webkit-scrollbar{
+  display: none;
+}
 
 nav {
   padding: 30px;

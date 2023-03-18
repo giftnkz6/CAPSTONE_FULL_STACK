@@ -27,11 +27,11 @@
                     <td><img :src="user.userProfile" alt=""></td>
                     <!-- <td>{{ user.joinDate }}</td> -->
                     <td><!-- Button trigger modal -->
-                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                        <button type="button" class="btn" data-bs-toggle="modal" :data-bs-target="'#exampleModal'+ `${user.userID}`"><i
                                 class="fa-solid fa-pen"></i></button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade" :id="'exampleModal' + `${user.userID}`" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -41,49 +41,53 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                        <!-- <div class="mb-3">
+                                            <input v-model="user.userID" class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" placeholder="first Name">
+                                        </div> -->
                                         <div class="mb-3">
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="first Name">
+                                            <input v-model="user.firstName" class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" placeholder="first Name">
                                         </div>
                                         <div class="mb-3">
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="Surname">
+                                            <input v-model="user.lastName" class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" placeholder="Surname">
                                         </div>
                                         <div class="mb-3">
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="Gender">
+                                            <input v-model="user.gender" class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" placeholder="Gender">
                                         </div>
                                         <div class="mb-3">
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="Cellphone Number">
+                                            <input v-model="user.cellphoneNumber" class="form-control"
+                                                id="exampleFormControlTextarea1" rows="3" placeholder="Cellphone Number">
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="name@example.com">
+                                            <input v-model="user.emailAdd" type="email" class="form-control"
+                                                id="exampleFormControlInput1" placeholder="name@example.com">
                                         </div>
                                         <div class="mb-3">
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="Password">
+                                            <input v-model="user.userPass" class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" placeholder="Password">
                                         </div>
                                         <div class="mb-3">
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="User Role">
+                                            <input v-model="user.userRole" class="form-control" id="exampleFormControlTextarea1"
+                                                rows="3" placeholder="User Role">
                                         </div>
                                         <div class="mb-3">
-                                            <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                                placeholder="User Profile">
+                                            <input v-model="user.userProfile" class="form-control"
+                                                id="exampleFormControlTextarea1" rows="3" placeholder="User Profile">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" @click="editUser(user)" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </td>
-                    <td><button class="btn"><i class="fa-solid fa-trash"></i></button></td>
+                    <td><button @click="deleteUser" class="btn"><i class="fa-solid fa-trash"></i></button></td>
                 </tr>
             </tbody>
         </table>
@@ -134,7 +138,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" @click="newProduct" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
+                        <button type="button" @click="newProduct" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Add</button>
                         <button type="button" class="btn btn-primary">Understood</button>
                     </div>
                 </div>
@@ -216,7 +221,17 @@ export default {
             price: "",
             prodQuantity: "",
             imgURL: "",
-            color: ""
+            color: "",
+            userID: '',
+            firstName: '',
+            lastName: '',
+            gender: '',
+            cellphoneNumber: '',
+            emailAdd: '',
+            userPass: '',
+            userRole: '',
+            userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
+            joinDate: ''
         }
     },
     methods: {
@@ -231,6 +246,27 @@ export default {
                 color: this.color
 
             })
+        },
+
+        editUser: function (user) {
+            return this.$store.dispatch("editUser", {
+                userID: user.userID,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                gender: user.gender,
+                cellphoneNumber: user.cellphoneNumber,
+                emailAdd: user.emailAdd,
+                userPass: user.userPass,
+                userRole: user.userRole,
+                userProfile: user.userProfile,
+                // joinDate: user.joinDate
+
+            })
+
+        },
+        deleteUser: function() {
+            // return this.$store.dispatch("deleteUser", user.userID)
+
         }
     },
     computed: {
@@ -280,4 +316,5 @@ img {
 
 td {
     color: #1F8A70;
-}</style>
+}
+</style>

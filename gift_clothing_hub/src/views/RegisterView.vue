@@ -31,7 +31,7 @@
                     rows="3" placeholder="Profile Picture url" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                <input type="date" v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3"
                     placeholder="Join Date" required>
             </div>
             <button type="submit" class="btn btn-secondary">Register</button>

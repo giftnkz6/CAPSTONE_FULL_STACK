@@ -7,6 +7,7 @@ export default createStore({
     user: null,
     products: null,
     product: null,
+    message:null
   },
   mutations: {
     setUsers(state, values){
@@ -21,6 +22,9 @@ export default createStore({
     setProduct(state, value){
       state.product = value
     },
+    setMessage(state,value){
+      state.message = value
+    }
   },
   actions: {
     getUsers: async(context) => {
@@ -85,28 +89,33 @@ export default createStore({
         }
       },
       async editUser (context, payload) {
-        const res = await axios.put(`${API}user/${id}`, payload)
-        const { msg, err } = await res.data
-        if (msg) {
-          context.commit('setUser', msg)
+        console.log(payload)
+        const res = await axios.put(`${API}user/${payload.userID}`, payload)
+        console.log(res)
+        const { message, err } = await res.data
+        if (message) {
+          context.commit('setUser', message)
         } else {
           context.commit('setMessage', err)
         }
       },
       async editProduct (context, payload) {
-        const res = await axios.put(`${backendURL}product/${id}`, payload)
-        const { msg, err } = await res.data
-        if (msg) {
-          context.commit('setProduct', msg)
+        const res = await axios.put(`${API}product/${id}`, payload)
+        const { message, err } = await res.data
+        if (message) {
+          console.log(message)
+          context.commit('setProduct', message)
         } else {
+          console.log(err)
+
           context.commit('setMessage', err)
         }
       },
       async deleteUser (context, payload) {
         const res = await axios.delete(`${API}user/${id}`, payload)
-        const { msg, err } = await res.data
-        if (msg) {
-          context.commit('setUser', msg)
+        const { message, err } = await res.data
+        if (message) {
+          context.commit('setUser', message)
         } else {
           context.commit('setMessage', err)
         }

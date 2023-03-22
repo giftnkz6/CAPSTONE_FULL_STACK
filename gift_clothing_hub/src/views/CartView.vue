@@ -11,11 +11,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr  v-for="product in cart" :key="product.id">
                     <th scope="row"></th>
-                    <td>{{  }}</td>
-                    <td>{{  }}</td>
-                    <td>{{  }}</td>
+                    <td>{{ product.imgURL  }}</td>
+                    <td>{{ product.prodDescription }}</td>
+                    <td>{{ product.prodQuantity }}</td>
+                    <td>{{ product.price}}</td>
                 </tr>
             </tbody>
         </table>
@@ -32,16 +33,16 @@
 import SpinnerVue from '@/components/SpinnerVue.vue';
 export default {
     name: "CartView",
+
+    data(){
+
+    },
     components: {
         SpinnerVue
     },
 
     methods: {
-     add() {
-      this.$store.dispatch("addToCart", {
-        id: this.id,
-      });
-    },
+     
   },
 
 
@@ -49,9 +50,13 @@ export default {
         product: function () {
             return this.$store.state.product
         },
+        products: function () {
+            return this.$store.state.products
+        },
     },
     created() {
         this.$store.dispatch("getProduct", this.$route.params.id)
+        this.$store.dispatch("getProducts")
     }
 }
 
@@ -69,7 +74,7 @@ export default {
     }
 
     h1, h3{
-       color: rgb(96, 27, 123);
+       color: lightcoral;
        margin-bottom: 3rem;
     }
 </style>

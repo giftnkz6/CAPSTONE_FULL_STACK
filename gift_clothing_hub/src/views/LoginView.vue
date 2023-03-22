@@ -1,5 +1,5 @@
 <template>
-    <div v-if="user"><h3>Welcome {{ user.firstName }} {{ user.lastName }}</h3></div>
+    <div v-if="!user">
     <div class="container">
         <form action="" @submit.prevent="login">
             <h3>SIGN IN</h3>
@@ -12,6 +12,10 @@
             <button type="submit" class="btn btn-secondary">Sign in</button>
             <p>Don't have an account? <a href="#register"></a><router-link to="/register">Sign up</router-link></p>
         </form>
+    </div>
+</div>
+    <div class="welcome" v-else><h1>Welcome {{ user.firstName }} {{ user.lastName }}</h1>
+        <img src="https://media4.giphy.com/media/8IfLqeprcAOq0rZn0G/giphy.gif?cid=6c09b95235976ae29dafe84daac9d8b91329f12dee873b18&rid=giphy.gif&ct=s" alt="">
     </div>
 </template>
 
@@ -56,10 +60,21 @@ export default {
     border-radius: 5%;
     margin-bottom: 7rem;
 }
+
+.welcome{
+    margin: auto;
+    margin-top: 6rem;
+    width: 50rem;
+}
 form{
     width: 500px;
     /* width: 380px; */
     margin: auto;
+}
+img{
+    width: 30rem;
+    margin-top: 3rem;
+    box-shadow: .2rem .2rem .2rem .2rem grey;
 }
 
 input{
@@ -73,6 +88,10 @@ h3{
 
 button{
     margin-bottom: 2rem ;
+}
+
+h1{
+    color: #1F8A70;
 }
 
 a{

@@ -70,4 +70,88 @@ export default {
     .wrapper{
         margin-left: 4rem;
     }
+
+    @media screen and (max-width: 605px) {
+        .container{
+        width: 400px;
+        height: 550px;
+        background-color: whitesmoke;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 8rem;
+    }
+
+    .wrapper{
+        margin: auto;
+    }
+    img{
+        width: 12rem;
+        border-radius: 50%;
+        margin-top: 2rem;
+        margin-bottom: 0rem;
+    }
+
+    h2{
+        margin-top: .4rem;
+    }
+
+
+    }
+
+    @media screen and (max-width: 430px) {
+        .container{
+        width: 350px;
+        height: 550px;
+        background-color: whitesmoke;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 8rem;
+    }
+
+    .wrapper{
+        margin: auto;
+    }
+    img{
+        width: 12rem;
+        border-radius: 50%;
+        margin-top: 2rem;
+        margin-bottom: 0rem;
+    }
+
+    h2{
+        margin-top: .4rem;
+    }
+
+
+    }
+
+    @media screen and (max-width: 370px) {
+        .container{
+        width: 280px;
+        height: 550px;
+        background-color: whitesmoke;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 8rem;
+    }
+
+    .wrapper{
+        margin: auto;
+    }
+    img{
+        width: 12rem;
+        border-radius: 50%;
+        margin-top: 2rem;
+        margin-bottom: 0rem;
+    }
+
+    h2{
+        margin-top: .4rem;
+    }
+
+
+    }
 </style>

@@ -9,7 +9,7 @@ export default createStore({
     product: null,
     message:null,
     asc: true,
-    cart: null
+    cart: []
   },
   mutations: {
     setUsers(state, values){

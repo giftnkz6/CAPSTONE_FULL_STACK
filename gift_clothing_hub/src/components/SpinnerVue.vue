@@ -16,7 +16,7 @@ export default {
     .spinner-grow{
         width: 10rem;
         height: 10rem;
-        color: yellow;
+        color: #B784A7;
     }
     .pos{
         margin: auto;

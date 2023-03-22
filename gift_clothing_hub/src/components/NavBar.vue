@@ -13,7 +13,7 @@
                         <li><a href="#login"></a><router-link to="/login">Login</router-link></li>
                         <li><a href="#register"></a><router-link to="/register">Register</router-link></li>
                         <li><a href="#shop"></a><router-link to="/shop">Shop</router-link></li>
-                        <li><a href="#shop"></a><router-link to="/cart">Cart</router-link></li>
+                        <li><a href="#shop"></a><router-link to="/cart"><i class="fa-solid fa-cart-shopping" style="color: #414968;"></i>Cart</router-link></li>
                         <li><a href="#admin"></a><router-link to="/admin">Admin</router-link></li>
                         <li><a href="#contact"></a><router-link to="/contact">Contact</router-link></li>
                         <router-link v-show="user" to="/userprofile">Account</router-link>   

@@ -7,7 +7,7 @@
             <p>{{ product.prodDescription }}</p>
             <p>{{ product.category }}</p>
             <p>{{ product.color }}</p>
-            <button type="button" class="btn btn-secondary">Add to cart</button>
+            <button @click="addToCart(product)" type="button" class="btn btn-secondary">Add to cart</button>
         </div>
     </div>
     <div v-else>
@@ -21,6 +21,20 @@ export default {
     name: "SingleProduct",
     components :{
         SpinnerVue
+    },
+    data(){
+        return{
+            cart: []
+        }
+    },
+
+    methods:{
+        addToCart: function(product) {
+            // console.log(product);
+            this.cart.push(product);
+            
+            console.log(this.cart);
+        }
     },
 
     computed: {

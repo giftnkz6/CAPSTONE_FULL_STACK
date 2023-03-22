@@ -3,7 +3,7 @@
         <div class="row">
             <div id="form" class="container justify-content-center">
                 <form class="form container mt-3" action="https://formspree.io/f/mrgdkjgy" method="POST">
-                    <h1>Contact Us</h1>
+                    <h1>Contact us</h1>
                     <div class="form-floating mb-4">
                         <input type="text" class="form-control" name="name" placeholder="Enter your name" id="floatingInput"
                             required>
@@ -41,11 +41,71 @@ export default {
 <style scoped>
 .container1{
     width: 36rem;
-    background-color: white;
+    background-color:  #d5d5eb;
     margin: auto;
     margin-bottom: 9rem;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
     margin-top: 5rem;
+    color: grey;
 }
 
+h1{
+    color: grey;
+}
+
+#floatingTextarea{
+    min-height: 8rem;
+}
+
+@media screen and (max-width: 600px) {
+    .container1{
+    width: 30rem;
+    background-color:  #d5d5eb;
+    margin: auto;
+    margin-bottom: 9rem;
+    /* border-radius: 2rem; */
+    margin-top: 5rem;
+    color: grey;
+}
+    
+}
+
+@media screen and (max-width: 510px) {
+    .container1{
+    width: 26rem;
+    background-color:  #d5d5eb;
+    margin: auto;
+    margin-bottom: 9rem;
+    /* border-radius: 2rem; */
+    margin-top: 5rem;
+    color: grey;
+}
+    
+}
+
+@media screen and (max-width: 440px) {
+    .container1{
+    width: 22rem;
+    background-color:  #d5d5eb;
+    margin: auto;
+    margin-bottom: 9rem;
+    /* border-radius: 2rem; */
+    margin-top: 5rem;
+    color: grey;
+}
+    
+}
+
+@media screen and (max-width: 380px) {
+    .container1{
+    width: 17rem;
+    background-color:  #d5d5eb;
+    margin: auto;
+    margin-bottom: 9rem;
+    /* border-radius: 2rem; */
+    margin-top: 5rem;
+    color: grey;
+}
+    
+}
 </style>

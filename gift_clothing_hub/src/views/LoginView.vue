@@ -76,8 +76,8 @@ button{
 }
 
 a{
-    text-decoration: none;
-    color: black;
+    /* text-decoration: none; */
+    color: blue;
     font-size: large;
 }
 

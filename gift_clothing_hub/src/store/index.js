@@ -7,7 +7,9 @@ export default createStore({
     user: null,
     products: null,
     product: null,
-    message:null
+    message:null,
+    asc: true,
+    cart: null
   },
   mutations: {
     setUsers(state, values){
@@ -24,8 +26,21 @@ export default createStore({
     },
     setMessage(state,value){
       state.message = value
+    },
+    setCart(state, value) {
+      state.cart = value
+    },
+  sortByPrice:(state)=>{
+    state.products.sort((a,b) => {
+      return a.price - b.price;
+    })
+    if(!state.asc){
+      state.products.reverse()
     }
-  },
+    state.asc=!state.asc
+  }
+
+},
   actions: {
     getUsers: async(context) => {
       const res = await axios.get(`${API}users`);
@@ -79,6 +94,16 @@ export default createStore({
           context.commit('setMessage', err);
         }
       },
+      async newUser(context, payload) {
+        let res = await axios.post(`${API}user`, payload);
+        console.log(res)
+        let {message, err} = await res.data;
+        if(message) {
+          context.commit('setUser', message);
+        }else{
+          context.commit('setMessage', err);
+        }
+      },
       async newProduct(context, payload) {
         let res = await axios.post(`${API}product`, payload);
         let {msg, err} = await res.data;
@@ -100,19 +125,18 @@ export default createStore({
         }
       },
       async editProduct (context, payload) {
-        const res = await axios.put(`${API}product/${id}`, payload)
+        console.log(payload)
+        const res = await axios.put(`${API}product/${payload.prodID}`, payload)
+        console.log(res)
         const { message, err } = await res.data
         if (message) {
-          console.log(message)
           context.commit('setProduct', message)
         } else {
-          console.log(err)
-
           context.commit('setMessage', err)
         }
       },
       async deleteUser (context, payload) {
-        const res = await axios.delete(`${API}user/${id}`, payload)
+        const res = await axios.delete(`${API}user/${payload.userID}`, payload)
         const { message, err } = await res.data
         if (message) {
           context.commit('setUser', message)
@@ -121,7 +145,7 @@ export default createStore({
         }
       },
       async deleteProduct (context, payload) {
-      const res = await axios.delete(`${API}product/${id}`, payload)
+      const res = await axios.delete(`${API}product/${payload.prodID}`, payload)
       const { msg, err } = await res.data
       if (msg) {
         context.commit('setProduct', msg)
@@ -129,6 +153,44 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
+    getCart: async(context) => {
+      const res = await axios.get(`${API}user/${payload.prodID}/carts`);
+      const {results} = await res.data;
+      if(results) {
+        console.log(results)
+        context.commit('setCart', results);
+      }
+    },
+    async addToCart(context, payload) {
+      let res = await axios.post(`${API}user/${payload.userID}/cart`, payload);
+      let {msg, err} = await res.data;
+      if(msg) {
+        context.commit('setCart', msg);
+      }else{
+        context.commit('setMessage', err);
+      }
+    },
+    async editCart (context, payload) {
+      console.log(payload)
+      const res = await axios.put(`${API}user/${payload.prodID}/cart/${id}`, payload)
+      console.log(res)
+      const { message, err } = await res.data
+      if (message) {
+        context.commit('setCart', message)
+      } else {
+        context.commit('setMessage', err)
+      }
+    },
+    async deleteCartItem(context, payload) {
+      const res =  await axios .delete(`${API}/user/${payload.prodID}/cart`)
+      const { msg, err } = await res.data
+      if (msg) {
+        context.commit('setProduct', msg)
+      } else {
+        context.commit('setMessage', err)
+      }
+    },
+    
   },
   modules: {
   }

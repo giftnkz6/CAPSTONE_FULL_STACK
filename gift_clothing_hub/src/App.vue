@@ -27,6 +27,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #1F8A70;
+  color: #6699CC;
   /* background-color: #00425A; */
   /* background-color: #B784A7; */
   background-color: lavender;

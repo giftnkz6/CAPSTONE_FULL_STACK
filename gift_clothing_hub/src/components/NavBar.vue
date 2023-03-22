@@ -16,6 +16,8 @@
                         <li><a href="#shop"></a><router-link to="/cart">Cart</router-link></li>
                         <li><a href="#admin"></a><router-link to="/admin">Admin</router-link></li>
                         <li><a href="#contact"></a><router-link to="/contact">Contact</router-link></li>
+                        <router-link v-show="user" to="/userprofile">Account</router-link>   
+
                     </ul>
                 </div>
             </div>
@@ -26,11 +28,26 @@
     export default{
         name: 'NavBar',
         data(){
+            return {
+            firstName: '',
+            lastName: '',
+            gender: '',
+            cellphoneNumber: '',
+            emailAdd: '',
+            userPass: '',
+            userRole: '',
+            }
             
         },
 
         methods:{
-        }
+        },
+
+        computed:{
+            user(){
+                return this.$store.state.user
+            }
+        },
     }
 </script>
 <style scoped>

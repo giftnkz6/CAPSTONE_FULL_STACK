@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>THE GIFT CLOHING HUB</h1>
+    <h1>THE GIFT CLOTHING HUB</h1>
     <img alt="" class="background" src="https://i.postimg.cc/R0dkfdpZ/adidas-shoe.gif">
   </div>
   <h2>OUR PROMOTIONS / COMING SOON</h2>
@@ -97,14 +97,25 @@ img{
   .container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin: 3rem 3rem;
   }
   
 }
 
-@media screen and (max-width: 895px) {
+@media screen and (max-width: 901px) {
   .container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin: 4rem 4rem;
+  }
+  
+}
+
+@media screen and (max-width: 799px) {
+  .container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 2.7rem 2.7rem;
   }
   
 }
@@ -112,25 +123,20 @@ img{
 @media screen and (max-width: 631px) {
   .container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    margin: 3rem 3rem;
   }
-  .card{
-    width: 14rem;
-    justify-content: left;
-  }
+
 
 }
 
-@media screen and (max-width: 631px) {
+@media screen and (max-width: 599px) {
   .container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    margin: .5rem .5rem; 
   }
-  .card{
-    width: 12rem;
-    justify-content: left;
-  }
-
+ 
 }
 
 
@@ -138,21 +144,7 @@ img{
   .container{
     display: grid;
     grid-template-columns: 1fr;
-  }
-
-  img{
-    width: 10rem;
-  }
-  .card{
-    width: 13rem;
-    margin-right: 3rem;
-  }
-
-  .background{
-    width: 24rem;
-  }
-  .navbar{
-    margin-left: auto;
+    margin: .7rem .7rem;
   }
 
 }

@@ -1,17 +1,4 @@
 <template>
-    <!-- <div>
-        <div v-if="product">
-            <div class="card">
-                <img :src="product?.imgURL" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product?.prodName }}</h5>
-                    <p>{{ product?.color }}</p>
-                    <p class="card-text">R{{ product?.price }}</p>
-                </div>
-            </div>
-        </div>
-        <div v-else><SpinnerVue/></div>
-    </div> -->
     <div class="container" v-if="product">
         <img :src="product.imgURL" alt="">
         <div class="wrap">
@@ -49,12 +36,54 @@ export default {
 
 <style scoped>
     img{
-        width: 32rem;
+        width: 30rem;
         margin-top: 3rem;
     }
     .container{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        /* margin-bottom: 8rem; */
+        margin-bottom: 8rem;
+    }
+
+    .wrap{
+        margin-top: 8rem;
+    }
+
+    @media screen and (max-width: 992px) {
+        img{
+            width: 24rem;
+            margin: auto;
+        }
+        .container{
+        display: grid;
+        column-gap: 1rem;
+        margin-bottom: 8rem;
+    }
+        
+    }
+    
+
+    @media screen and (max-width: 770px) {
+        img{
+            width: 20rem;
+        }
+        .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 8rem;
+    }
+        
+    }
+
+    @media screen and (max-width: 770px) {
+        img{
+            width: 17rem;
+        }
+        .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-bottom: 8rem;
+    }
+        
     }
 </style>

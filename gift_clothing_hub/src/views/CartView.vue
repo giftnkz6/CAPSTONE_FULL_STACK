@@ -13,9 +13,9 @@
             <tbody>
                 <tr>
                     <th scope="row"></th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td>{{  }}</td>
+                    <td>{{  }}</td>
+                    <td>{{  }}</td>
                 </tr>
             </tbody>
         </table>
@@ -35,6 +35,15 @@ export default {
     components: {
         SpinnerVue
     },
+
+    methods: {
+     add() {
+      this.$store.dispatch("addToCart", {
+        id: this.id,
+      });
+    },
+  },
+
 
     computed: {
         product: function () {

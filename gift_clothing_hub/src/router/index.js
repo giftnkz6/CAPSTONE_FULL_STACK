@@ -8,6 +8,7 @@ import ShopView from '../views/ShopView'
 import AdminView from '../views/AdminView'
 import SingleProduct from '../views/SingleProduct'
 import CartView from '../views/CartView'
+import UserProfile from '../views/UserProfile'
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     path: '/product/:id',
     name: 'product',
     component: SingleProduct
+  },
+  {
+    path: '/userprofile',
+    name: 'userprofile',
+    component: UserProfile
   },
   {
     path: '/admin',

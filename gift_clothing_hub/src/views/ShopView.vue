@@ -1,5 +1,5 @@
 <template>
-    <p>{{ screen }}</p>
+    <h3>{{ screen }}</h3>
     <div v-if="products">
         <form action="">
             <div class="mb-3">
@@ -19,29 +19,23 @@
                 </ul>
             </div>
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                <button @click="sorted" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Sort by Price
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a @click="sort" class="dropdown-item" href="#">Lowest-Highest</a></li>
-                    <li><a @click="sortAsc" class="dropdown-item" href="#">Highest-Lowest</a></li>
-
-                </ul>
             </div>
-            <div class="dropdown">
-
+            <!-- <div class="dropdown">
                 <select v-model="screen" id="filter" class="form-select" aria-label="Default select example">
                     <option  selected>All</option>
-                    <option @click="filtering" value="Black">Black</option>
+                    <option value="Black">Black</option>
                     <option value="Grey">Grey</option>
                     <option value="White">White</option>
                     <option value="Pink">Pink</option>
                     <option value="Blue">Blue</option>
                 </select>
-            </div>
+            </div> -->
             
-            <!-- <div class="dropdown">
+            <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Filter by color
@@ -53,7 +47,7 @@
                     <li><a class="dropdown-item" href="#">Pink</a></li>
                     <li><a class="dropdown-item" href="#">Blue</a></li>
                 </ul>
-            </div> -->
+            </div>
         </div> 
 
         <div class="container">
@@ -87,56 +81,36 @@ export default {
     },
     data(){
         return{
-            screen: ""
+            search: ""
         }
+    },
+
+    methods: {
+        sorted: function() {
+                this.$store.commit("sortByPrice")
+            },
     },
     computed: {
         products: function () {
             return this.$store.state.products;
         },
 
-        sort: function () {
-            let sortedProducts = this.products.sort((a, b) => {
-                if (a.price < b.price) {
-                    return -1;
-                }
-                else if (a.price > b.price) {
-                    return 1;
-                }
-                else {
-                    return 0;
-                }
-            })
-
-        },
-
-        sortAsc: function () {
-            let sortedProducts = this.products.sort((a, b) => {
-                if (a.price > b.price) {
-                    return -1;
-                }
-                else if (a.price < b.price) {
-                    return 1;
-                }
-                else {
-                    return 0;
-                }
-            })
-
-        },
-
         filtering: function () {
             let filterByColor = this.products.filter((product) => {
-                if (screen === "Black") {
-                    return (product.color == "Black")
+                if (this.screenscreen === "Black") {
+                    return (this.color == product.color)
                 }
             }
             )
             // return filterByColor
-        }
-
-
-    },
+        },
+        searchFilter: function() {
+            if(this.search.length >0){
+                return this.products.filter((product) => product.prodName.toLowerCase.includes(this.search))
+            }
+            return this.products
+        },
+        },
 
 
 
@@ -150,11 +124,13 @@ export default {
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    column-gap: 1rem;
     margin-top: 12rem;
 }
 
 .dropdown {
     margin-top: 3rem;
+    margin-left: 1rem;
 }
 
 #filter{
@@ -178,6 +154,105 @@ export default {
 
 .form-control {
     width: 10rem;
-    margin-left: 80rem;
+    margin-left: 65rem;
+}
+
+.form-select{
+    width: 5rem;
+}
+
+@media screen and (max-width: 1212px) {
+    .form-control {
+    width: 10rem;
+    margin-left: 40rem;
+}
+}
+
+@media screen and (max-width: 1161px) {
+    .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, .2fr);
+    margin-left: 40rem;
+}
+    
+}
+
+@media screen and (max-width: 1108px) {
+    .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, .2fr);
+    margin-left: 25rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem;
+    margin-top: 12rem;
+}
+    
+}
+
+@media screen and (max-width: 855px) {
+    .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, .2fr);
+    margin-left: 8rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    margin-top: 12rem;
+}
+
+.form-control {
+    width: 10rem;
+    margin-left: 20rem;
+}
+
+    
+}
+
+@media screen and (max-width: 655px) {
+    .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, .2fr);
+    margin-left: 2rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    margin-top: 12rem;
+}
+
+.form-control {
+    width: 10rem;
+    margin-left: 10rem;
+}
+
+    
+}
+
+@media screen and (max-width: 530px) {
+    .buttons {
+    display: grid;
+    grid-template-columns: repeat(1, .2fr);
+    margin-left: 0rem;
+    width: 3rem;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 1rem;
+    margin-top: 12rem;
+}
+
+.form-control {
+    width: 10rem;
+    margin-left: 0rem;
+}
+
+    
 }
 </style>

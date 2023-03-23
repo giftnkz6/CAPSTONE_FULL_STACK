@@ -18,10 +18,10 @@
                 </button>
             </div>
 
-            <select v-model="screenColor" class="dropdown">
+<select v-model="screenColor" class="dropdown">
                 <option value="">All Color</option>
                 <option v-for="color in colors" :key="color">{{ color }}</option>
-            </select>
+            </select>            
         </div>
 
         <div class="container">
@@ -120,6 +120,11 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 1rem;
     margin-top: 12rem;
+}
+
+select{
+    background-color: skyblue;
+    border-radius: 2px;
 }
 
 img{

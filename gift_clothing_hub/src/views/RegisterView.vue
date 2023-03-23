@@ -3,8 +3,8 @@
         <form action="" @submit.prevent="register">
             <h1>Register</h1>
             <div class="mb-3">
-                <input type="text" v-model="firstName" class="form-control" id="exampleFormControlTextarea1"
-                    rows="3" placeholder="First Name" required>
+                <input type="text" v-model="firstName" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="First Name" required>
             </div>
             <div class="mb-3">
                 <input type="text" v-model="lastName" class="form-control" id="exampleFormControlTextarea1" rows="3"
@@ -15,24 +15,25 @@
                     placeholder="Gender" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="cellphoneNumber" class="form-control" id="exampleFormControlTextarea1"
-                    rows="3" placeholder="Cellphone number" required>
+                <input type="text" v-model="cellphoneNumber" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Cellphone number" required>
             </div>
             <div class="mb-3">
                 <input type="email" v-model="emailAdd" class="form-control" id="exampleFormControlInput1"
                     placeholder="name@example.com" required>
             </div>
             <div class="mb-3">
-                <input type="password" v-model="userPass" class="form-control" id="exampleFormControlTextarea1"
-                    rows="3" placeholder="Password" required>
+                <input type="password" v-model="userPass" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Password" required>
             </div>
             <div class="mb-3">
-                <input type="text" v-model="userProfile" class="form-control" id="exampleFormControlTextarea1"
-                    rows="3" placeholder="Profile Picture url" required>
+                <input type="text" v-model="userProfile" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Profile Picture url" required>
             </div>
             <div class="mb-3">
                 <input type="date" v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3"
                     placeholder="Join Date" required>
+                <p>{{ formattedDate }}</p>
             </div>
             <button type="submit" class="btn btn-secondary">Register</button>
         </form>
@@ -58,6 +59,16 @@ export default {
     computed: {
         user() {
             return this.$store.state.user;
+        },
+        formattedDate() {
+            if (this.joinDate) {
+                const date = new Date(this.joinDate);
+                return `${date.getFullYear()}-${(date.getMonth() + 1)
+                    .toString()
+                    .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+            } else {
+                return '';
+            }
         },
     },
     methods: {

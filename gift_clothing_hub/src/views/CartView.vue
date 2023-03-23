@@ -35,6 +35,9 @@ export default {
     name: "CartView",
 
     data(){
+        return{
+
+        }
 
     },
     components: {
@@ -42,6 +45,7 @@ export default {
     },
 
     methods: {
+        
      
   },
 

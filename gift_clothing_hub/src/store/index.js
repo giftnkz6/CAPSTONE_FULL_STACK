@@ -170,6 +170,7 @@ export default createStore({
         context.commit('setMessage', err);
       }
     },
+
     async editCart (context, payload) {
       console.log(payload)
       const res = await axios.put(`${API}user/${payload.prodID}/cart/${id}`, payload)
@@ -181,6 +182,7 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
+
     async deleteCartItem(context, payload) {
       const res =  await axios .delete(`${API}/user/${payload.prodID}/cart`)
       const { msg, err } = await res.data
@@ -192,6 +194,7 @@ export default createStore({
     },
     
   },
+  
   modules: {
   }
 })

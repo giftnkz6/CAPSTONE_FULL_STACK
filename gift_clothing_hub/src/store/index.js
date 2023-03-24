@@ -9,7 +9,8 @@ export default createStore({
     product: null,
     message:null,
     asc: true,
-    cart: []
+    cart: null,
+    carts: null
   },
   mutations: {
     setUsers(state, values){
@@ -29,6 +30,9 @@ export default createStore({
     },
     setCart(state, value) {
       state.cart = value
+    },
+    setCarts(state, values) {
+      state.carts = values
     },
   sortByPrice:(state)=>{
     state.products.sort((a,b) => {
@@ -155,12 +159,22 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    getCart: async(context) => {
-      const res = await axios.get(`${API}user/${payload.prodID}/carts`);
+    getCart: async(context, payload) => {
+      const res = await axios.get(`${API}user/${payload?.userID}/carts`);
       const {results} = await res.data;
+      console.log("Results from cart : ", results)
       if(results) {
         console.log(results)
         context.commit('setCart', results);
+      }
+    },
+    getCarts: async(context) => {
+      let currentUser = JSON.parse(localStorage.getItem('user'));
+      const res = await axios.get(`${API}user/${currentUser?.userID}/carts`);
+      const {results} = await res.data;
+      if(results) {
+        console.log("cart - results: ", results)
+        context.commit('setCarts', results);
       }
     },
     async addToCart(context, payload) {

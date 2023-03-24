@@ -47,9 +47,8 @@ export default {
             return JSON.parse(localStorage.getItem("user"))
         }
     },
-    created() {
+    mounted() {
         this.$store.dispatch("getProduct", this.$route.params.id)
-        this.$store.dispatch("getUser", this.$route.params.id)
     }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="product">
+    <div v-if="carts">
         <h1>Cart</h1>
         <table class="table">
             <thead>
@@ -11,12 +11,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr  v-for="product in cart" :key="product.id">
-                    <th scope="row"></th>
-                    <td>{{ product.imgURL  }}</td>
+                <tr  v-for="product in carts" :key="product.id">
+                    
+                    <td><img :src="product.imgURL" alt=""></td>
                     <td>{{ product.prodDescription }}</td>
                     <td>{{ product.prodQuantity }}</td>
-                    <td>{{ product.price}}</td>
+                    <td>R{{ product.price}}</td>
                 </tr>
             </tbody>
         </table>
@@ -36,7 +36,7 @@ export default {
 
     data(){
         return{
-
+            
         }
 
     },
@@ -51,16 +51,19 @@ export default {
 
 
     computed: {
-        product: function () {
-            return this.$store.state.product
+    
+        carts: function () {
+            return this.$store.state.carts
         },
-        products: function () {
-            return this.$store.state.products
-        },
+        user: function () {
+            return JSON.parse(localStorage.getItem("user"))
+        }
+
     },
     created() {
-        this.$store.dispatch("getProduct", this.$route.params.id)
-        this.$store.dispatch("getProducts")
+        this.$store.dispatch("getCarts")
+        // this.$store.dispatch("getProducts")
+        // this.$store.dispatch("getUser")
     }
 }
 
@@ -75,6 +78,10 @@ export default {
     a{
         text-decoration: none;
         color: white;
+    }
+
+    img{
+        width: 5rem;
     }
 
     h1, h3{

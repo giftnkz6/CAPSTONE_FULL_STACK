@@ -3,7 +3,7 @@
     <img class="img" src="https://i.postimg.cc/nzcxMrxg/Screenshot-2023-03-13-095116.png" alt="">
     <div class="wrap">
       <h2 class="text">CLOTHING HUB</h2>
-      <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quae, exercitationem tempore dolore deserunt in eligendi nostrum quaerat tenetur, maxime alias aperiam non minus voluptas magni molestias? A, at pariatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur possimus facilis reprehenderit culpa illo nesciunt consequuntur odio nam, necessitatibus porro?
+      <p class="text">AT THE GIFT CLOTHING HUB we pride ourselves with delivering the best quality products at the best price. The Gift Clothing Hub was founded by Gift Mahlangu in 2020 with the mission to provide an online store which delivers in time at your door step. We sell sneakers all brands, jackets and caps to all genders and all age groups. In 2022 We won the best clothing store award at the African fashion awards 2022, which is our biggest achievement.
       </p>
     </div>
   </div>
@@ -16,7 +16,7 @@
     height: 28rem;
     margin-left: 2rem;
     margin-top: 6rem;
-    box-shadow: .2rem .2rem .2rem grey;
+    box-shadow: .5rem .5rem .5rem grey;
   }
   .about{
     display: flex;
@@ -24,7 +24,7 @@
 
   h2{
     font-size: 3rem;
-    text-shadow: .2rem .2rem .2rem grey;
+    text-shadow: .2rem .2rem .2rem skyblue;
   }
 
   .text{
@@ -33,7 +33,7 @@
   }
 
   p{
-    color: black;
+    color: grey;
   }
   .wrap{
     width: 40rem;

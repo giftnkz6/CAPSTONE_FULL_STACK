@@ -29,12 +29,19 @@ export default {
     },
 
     methods:{
-        addToCart: function(product) {
-            // console.log(product);
-            this.cart.push(product);
-            
-            console.log(this.cart);
-        }
+        // addToCart: function(product) {
+        //     async function addToCart(product, user){
+        //     let { prodID } = product;
+        //     let { userID } = user;
+        //     let orderPayload = {
+        //         userID: userID,
+        //         prodID: prodID,
+        //     };
+        //     await store.dispatch('addOrder', orderPayload);
+        //     let message = computed(() => store.state.message)
+        //     tempAlert(await message.value, 1000);
+        // }
+        // }
     },
 
     computed: {

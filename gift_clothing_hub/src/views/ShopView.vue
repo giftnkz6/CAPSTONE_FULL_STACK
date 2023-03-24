@@ -115,6 +115,10 @@ export default {
 </script>
 
 <style scoped>
+
+p{
+    color: grey;
+}
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -145,6 +149,11 @@ img{
     margin-bottom: 2rem;
     width: 15rem;
     height: 28rem;
+    background-color: whitesmoke;
+}
+
+buttons:hover{
+    background-color: maroon;
 }
 
 .buttons {
@@ -154,7 +163,7 @@ img{
 }
 
 .card:hover {
-    background-color: aliceblue;
+    background-color: white;
 }
 
 .form-control {

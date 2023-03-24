@@ -15,7 +15,7 @@
     </div>
 </div>
     <div class="welcome" v-else><h1>Welcome {{ user.firstName }} {{ user.lastName }}</h1>
-        <img src="https://media4.giphy.com/media/8IfLqeprcAOq0rZn0G/giphy.gif?cid=6c09b95235976ae29dafe84daac9d8b91329f12dee873b18&rid=giphy.gif&ct=s" alt="">
+        <img class="welcome-img" src="https://media4.giphy.com/media/8IfLqeprcAOq0rZn0G/giphy.gif?cid=6c09b95235976ae29dafe84daac9d8b91329f12dee873b18&rid=giphy.gif&ct=s" alt="">
     </div>
 </template>
 
@@ -100,6 +100,23 @@ a{
     font-size: large;
 }
 
+@media screen and (max-width: 1000px){
+    .welcome-img{
+        width: 25rem;
+    }
+}
+
+@media screen and (max-width: 815px){
+    .welcome-img{
+        width: 15rem;
+    }
+
+    .welcome{
+        width: 20rem;
+    }
+}
+
+
 @media screen and (max-width: 580px) {
     .container{
         width: 560px;
@@ -157,6 +174,14 @@ a{
     }
     form{
         width: 280px;
+    }
+
+    .welcome-img{
+        width: 15rem;
+    }
+
+    .welcome{
+        width: 17rem;
     }
 }
 

@@ -31,9 +31,8 @@
                     placeholder="Profile Picture url" required>
             </div>
             <div class="mb-3">
-                <input type="date" v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                    placeholder="Join Date" required>
-                <p>{{ formattedDate }}</p>
+                <input v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    placeholder="Join Date/yyyy-mm-dd" required>
             </div>
             <button type="submit" class="btn btn-secondary">Register</button>
         </form>
@@ -59,16 +58,6 @@ export default {
     computed: {
         user() {
             return this.$store.state.user;
-        },
-        formattedDate() {
-            if (this.joinDate) {
-                const date = new Date(this.joinDate);
-                return `${date.getFullYear()}-${(date.getMonth() + 1)
-                    .toString()
-                    .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-            } else {
-                return '';
-            }
         },
     },
     methods: {

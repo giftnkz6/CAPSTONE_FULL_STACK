@@ -81,4 +81,18 @@ export default {
        color: lightcoral;
        margin-bottom: 3rem;
     }
+
+    @media screen and (max-width: 500px) {
+        .emoji{
+            width: 20rem;
+        }
+        
+    }
+
+    @media screen and (max-width: 500px) {
+        .emoji{
+            width: 17rem;
+        }
+        
+    }
 </style>

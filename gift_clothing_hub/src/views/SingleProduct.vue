@@ -7,7 +7,7 @@
             <p>{{ product.prodDescription }}</p>
             <p>{{ product.category }}</p>
             <p>{{ product.color }}</p>
-            <button @click="addToCart(product)" type="button" class="btn btn-secondary">Add to cart</button>
+            <button @click="addToCart(user, product)" type="button" class="btn btn-secondary">Add to cart</button>
         </div>
     </div>
     <div v-else>
@@ -24,33 +24,32 @@ export default {
     },
     data(){
         return{
-            cart: []
+            userID: '',
+            prodID: ""
         }
     },
 
     methods:{
-        // addToCart: function(product) {
-        //     async function addToCart(product, user){
-        //     let { prodID } = product;
-        //     let { userID } = user;
-        //     let orderPayload = {
-        //         userID: userID,
-        //         prodID: prodID,
-        //     };
-        //     await store.dispatch('addOrder', orderPayload);
-        //     let message = computed(() => store.state.message)
-        //     tempAlert(await message.value, 1000);
-        // }
-        // }
+        addToCart: function (user, product) {
+            return this.$store.dispatch("addToCart", {
+                userID: user?.userID,
+                prodID: product?.prodID
+
+            })
+        },
     },
 
     computed: {
         product: function () {
             return this.$store.state.product
         },
+        user: function () {
+            return JSON.parse(localStorage.getItem("user"))
+        }
     },
     created() {
         this.$store.dispatch("getProduct", this.$route.params.id)
+        this.$store.dispatch("getUser", this.$route.params.id)
     }
 }
 </script>

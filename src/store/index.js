@@ -10,7 +10,8 @@ export default createStore({
     message:null,
     asc: true,
     cart: null,
-    carts: null
+    carts: null,
+    Spinner: true
   },
   mutations: {
     setUsers(state, values){

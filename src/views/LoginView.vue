@@ -9,24 +9,34 @@
             <div class="mb-3">
                 <input type="password" class="form-control" v-model="userPass" id="exampleFormControlTextarea1" rows="3" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-secondary">Sign in</button>
-            <p>Don't have an account? <a href="#register"></a><router-link to="/register">Sign up</router-link></p>
+            <button type="submit" @click="trig" class="btn btn-secondary">Sign in<div v-if="spinner">
+    <SpinnerVue/>
+</div></button>
+            <p>Don't have an account? <a href="#register"></a><router-link  to="/register">Sign up</router-link></p>
         </form>
     </div>
 </div>
-    <div class="welcome" v-else><h1>Welcome {{ user.firstName }} {{ user.lastName }}</h1>
+
+
+
+    <div class="welcome" v-if="user"><h1>Welcome {{ user.firstName }} {{ user.lastName }}</h1>
         <img class="welcome-img" src="https://media4.giphy.com/media/8IfLqeprcAOq0rZn0G/giphy.gif?cid=6c09b95235976ae29dafe84daac9d8b91329f12dee873b18&rid=giphy.gif&ct=s" alt="">
     </div>
 </template>
 
 <script>
+import SpinnerVue from '@/components/SpinnerVue.vue';
 export default {
     name: "LoginView",
+    components:{
+        SpinnerVue
+    },
 
     data() {
         return {
             emailAdd: "",
             userPass: "",
+            spinner: ""
         };
     },
     computed: {
@@ -44,8 +54,8 @@ export default {
             });
         },
 
-        log(){
-            alert("Logged in")
+        trig() {
+           return this.spinner = true
         }
     },
 };
@@ -61,6 +71,11 @@ export default {
     margin-bottom: 7rem;
 }
 
+.spinner-grow{
+        width: 1rem;
+        height: 1rem;
+        color: #B784A7;
+    }
 .welcome{
     margin: auto;
     margin-top: 6rem;
@@ -86,6 +101,8 @@ h3{
     margin-top: 2rem;
 }
 
+
+
 button{
     margin-bottom: 2rem ;
 }
@@ -100,7 +117,7 @@ a{
     font-size: large;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1075px){
     .welcome-img{
         width: 25rem;
     }

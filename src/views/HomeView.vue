@@ -37,6 +37,8 @@
       </div>
     </div>
   </div>
+  <!-- <button class="btn btn-success lg-light"><router-link to="/shop">Shop</router-link></button> -->
+  <a href="/shop"><button class="st">Shop</button></a>
 </template>
 
 <script>
@@ -50,6 +52,15 @@ export default {
 </script>
 
 <style scoped>
+
+button{
+  width: 6rem;
+  height: 3rem;
+  border-radius: 10px;
+  color: white;
+  background-color: olive;
+  margin-bottom: 2rem;
+}
 
 h1{
   font-size: 3rem;
@@ -83,6 +94,9 @@ h2{
   width: 16rem;
   /* height: 29rem; */
   margin-bottom: 2rem;
+}
+button router-link{
+  color: white;
 }
 
 img{

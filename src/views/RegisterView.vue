@@ -34,15 +34,18 @@
                 <input v-model="joinDate" class="form-control" id="exampleFormControlTextarea1" rows="3"
                     placeholder="Join Date/yyyy-mm-dd" required>
             </div>
-            <button type="submit" class="btn btn-secondary">Register</button>
+            <button type="submit" class="btn btn-secondary">Register <div v-if="loading"><SpinnerVue/></div></button>
         </form>
-
     </div>
 </template>
 
 <script>
+import SpinnerVue from "@/components/SpinnerVue.vue"
 export default {
     name: "RegisterView",
+    components: {
+        SpinnerVue
+    },
     data() {
         return {
             firstName: '',
@@ -52,7 +55,8 @@ export default {
             emailAdd: '',
             userPass: '',
             userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
-            joinDate: ''
+            joinDate: '',
+            loading: false
         };
     },
     computed: {
@@ -62,6 +66,7 @@ export default {
     },
     methods: {
         register() {
+            this.loading = true
             return this.$store.dispatch("register", {
                 firstName: this.firstName,
                 lastName: this.lastName,
@@ -71,7 +76,10 @@ export default {
                 userPass: this.userPass,
                 userProfile: 'https://i.postimg.cc/3rZ0H0D8/profile-Image.png',
                 joinDate: this.joinDate
-            });
+            })
+                .then(() => {
+                    this.loading = false;
+                });
         },
     },
 };
@@ -85,7 +93,6 @@ form {
 
 .register {
     width: 620px;
-    height: 560px;
     margin: auto;
     box-shadow: 0 0 10px #c1c1c1;
     background-color: whitesmoke;

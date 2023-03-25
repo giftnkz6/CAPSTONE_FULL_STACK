@@ -21,10 +21,10 @@ const routes = [
     path: '/about',
     name: 'about',
     component: AboutView,
-    beforeEnter() {
-      if(!JSON.parse(localStorage.getItem("user")))
-      router.push({path: "/login"})
-    }
+    // beforeEnter() {
+    //   if(!JSON.parse(localStorage.getItem("user")))
+    //   router.push({path: "/login"})
+    // }
   },
   {
     path: '/login',
@@ -50,38 +50,66 @@ const routes = [
   {
     path: '/shop',
     name: 'shop',
-    component: ShopView
+    component: ShopView,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   },
   {
     path: '/checkout',
     name: 'checkout',
-    component: CheckOut
+    component: CheckOut,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   },
 
   {
     path: '/product/:id',
     name: 'product',
-    component: SingleProduct
+    component: SingleProduct,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   },
   {
     path: '/userprofile',
     name: 'userprofile',
-    component: UserProfile
+    component: UserProfile,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   },
   {
     path: '/admin',
     name: 'admin',
-    component: AdminView
+    component: AdminView,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   },
   {
     path: '/cart',
     name: 'cart',
-    component: CartView
+    component: CartView,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   },
   {
     path: '/contact',
     name: 'contact',
-    component: ContactView
+    component: ContactView,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   }
 ]
 

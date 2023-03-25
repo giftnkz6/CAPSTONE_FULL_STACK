@@ -9,6 +9,8 @@ import AdminView from '../views/AdminView'
 import SingleProduct from '../views/SingleProduct'
 import CartView from '../views/CartView'
 import UserProfile from '../views/UserProfile'
+import CheckOut from '../views/CheckOut'
+
 
 const routes = [
   {
@@ -36,6 +38,12 @@ const routes = [
     name: 'shop',
     component: ShopView
   },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: CheckOut
+  },
+
   {
     path: '/product/:id',
     name: 'product',

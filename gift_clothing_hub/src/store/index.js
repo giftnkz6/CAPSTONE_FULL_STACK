@@ -191,19 +191,21 @@ export default createStore({
       console.log(payload)
       const res = await axios.put(`${API}user/${payload.prodID}/cart/${id}`, payload)
       console.log(res)
-      const { message, err } = await res.data
-      if (message) {
+      const { msg, err } = await res.data
+      if (results) {
         context.commit('setCart', message)
       } else {
         context.commit('setMessage', err)
       }
     },
 
-    async deleteCartItem(context, payload) {
-      const res =  await axios .delete(`${API}/user/${payload.prodID}/cart`)
+    async deleteCartItem(context) {
+      let currentUser = JSON.parse(localStorage.getItem('user'));
+      const res =  await axios .delete(`${API}user/${currentUser?.userID}/cart`)
       const { msg, err } = await res.data
       if (msg) {
-        context.commit('setProduct', msg)
+        console.log("delete - results: ", msg)
+        context.commit('setCart', msg)
       } else {
         context.commit('setMessage', err)
       }

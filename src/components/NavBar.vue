@@ -48,19 +48,19 @@ export default {
 
     methods: {
 
-        logout: function () {
-            fetch('/api/logout', {
-                method: 'POST',
-                credentials: 'include'
-            })
-                .then(() => {
-                    localStorage.removeItem('user');
-                    window.location.href = '/login';
-                })
-                .catch(error => {
-                    console.error('Logout failed:', error);
-                });
-        }
+        // logout: function () {
+        //     fetch('/api/logout', {
+        //         method: 'POST',
+        //         credentials: 'include'
+        //     })
+        //         .then(() => {
+        //             localStorage.removeItem('user');
+        //             window.location.href = '/login';
+        //         })
+        //         .catch(error => {
+        //             console.error('Logout failed:', error);
+        //         });
+        // }
     },
 
     computed: {

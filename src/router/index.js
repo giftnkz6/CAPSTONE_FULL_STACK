@@ -11,7 +11,6 @@ import CartView from '../views/CartView'
 import UserProfile from '../views/UserProfile'
 import CheckOut from '../views/CheckOut'
 
-
 const routes = [
   {
     path: '/',
@@ -19,9 +18,23 @@ const routes = [
     component: HomeView
   },
   {
+    path: '/logout',
+    name: 'logout',
+    component: LoginView,
+    beforeEnter() {
+      localStorage.removeItem('user');
+      router.push({path: "/login"})
+
+    }
+  },
+  {
     path: '/about',
     name: 'about',
-    component: AboutView
+    component: AboutView,
+    beforeEnter() {
+      if(!JSON.parse(localStorage.getItem("user")))
+      router.push({path: "/login"})
+    }
   },
   {
     path: '/login',

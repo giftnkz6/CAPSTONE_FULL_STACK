@@ -177,6 +177,8 @@ export default createStore({
         context.commit('setCarts', results);
       }
     },
+
+    
     async addToCart(context, payload) {
       let res = await axios.post(`${API}user/${payload.userID}/cart`, payload);
       let {msg, err} = await res.data;

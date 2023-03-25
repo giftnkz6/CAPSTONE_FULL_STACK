@@ -18,16 +18,6 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/logout',
-    name: 'logout',
-    component: LoginView,
-    beforeEnter() {
-      localStorage.removeItem('user');
-      router.push({path: "/login"})
-
-    }
-  },
-  {
     path: '/about',
     name: 'about',
     component: AboutView,
@@ -40,6 +30,17 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: LoginView,
+    beforeEnter() {
+      router.push({path: "/login"})
+      localStorage.removeItem('user');
+      location.reload();
+
+    }
   },
   {
     path: '/register',

@@ -22,7 +22,10 @@
                         <li v-show="isAdmin"><a href="#admin"></a><router-link to="/admin">Admin</router-link></li>
                         <li><a href="#contact"></a><router-link to="/contact">Contact</router-link></li>
                         <router-link v-show="user" to="/userprofile">Account</router-link>
-                        <li><a v-show="user" @click="logout" href="">logout</a></li>
+                        <!-- <li><a v-show="user" @click="logout" href="">logout</a></li> -->
+                        <li>
+                            <router-link v-show="user" to="/logout">Logout</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,19 +51,19 @@ export default {
 
     methods: {
 
-        // logout: function () {
-        //     fetch('/api/logout', {
-        //         method: 'POST',
-        //         credentials: 'include'
-        //     })
-        //         .then(() => {
-        //             localStorage.removeItem('user');
-        //             window.location.href = '/login';
-        //         })
-        //         .catch(error => {
-        //             console.error('Logout failed:', error);
-        //         });
-        // }
+        logout: function () {
+            fetch('/api/logout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+                .then(() => {
+                    localStorage.removeItem('user');
+                    window.location.href = '/login';
+                })
+                .catch(error => {
+                    console.error('Logout failed:', error);
+                });
+        }
     },
 
     computed: {
